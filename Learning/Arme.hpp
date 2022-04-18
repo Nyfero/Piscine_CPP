@@ -1,22 +1,20 @@
-#ifndef DEF_ARME
-#define DEF_ARME
+#ifndef ARME_HPP
+#define ARME_HPP
 
-#include <iostream>
 #include <string>
- 
+
 class Arme
 {
-    public:
- 
-    Arme();
-    Arme(std::string nom, int degats);
-    void changer(std::string nom, int degats);
-    void afficher() const;
- 
-    private:
- 
-    std::string m_nom;
-    int m_degats;
+	public:
+		Arme();
+		Arme(std::string nomArme, int degatsArme);
+		void 	changer(std::string nom, int degats);
+		void 	afficher() const;
+		int		get_degats() const;
+
+	private:
+		std::string	m_nom;
+		int			m_degats;
 };
- 
+
 #endif

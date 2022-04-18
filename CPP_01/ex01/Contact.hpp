@@ -1,4 +1,4 @@
-#ifndef CONTACT_H
+#ifndefExercis CONTACT_H
 # define CONTACT_H
 
 # include <string>

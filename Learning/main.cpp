@@ -1,3 +1,8 @@
+#include "Arme.hpp"
+#include "Personnage.hpp"
+#include <string>
+#include <iostream>
+
 int main()
 {
     //Création des personnages
@@ -12,9 +17,9 @@ int main()
     goliath.attaquer(david);
  
     //Temps mort ! Voyons voir la vie de chacun…
-    cout << "David" << endl;
+    std::cout << "David" << std::endl;
     david.afficherEtat();
-    cout << endl << "Goliath" << endl;
+    std::cout << std::endl << "Goliath" << std::endl;
     goliath.afficherEtat();
  
     return 0;
