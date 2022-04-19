@@ -19,6 +19,7 @@ class Contact
 		std::string	get_nickname() const;
 		std::string	get_phone_number() const;
 		std::string	get_secret() const;
+		void		disp_contact() const;
 		~Contact();
 		
 	private:

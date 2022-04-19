@@ -35,3 +35,14 @@ std::string	Contact::get_phone_number() const
 
 std::string	Contact::get_secret() const
 { return (m_darkest_secret); }
+
+void		Contact::disp_contact() const
+{
+	std::cout << "\e[92m";
+	std::cout << "First name: " << m_first_name << std::endl;
+	std::cout << "Last name: " << m_last_name << std::endl;
+	std::cout << "Nickname: " << m_nickname << std::endl;
+	std::cout << "Phone number: " << m_phone_number << std::endl;
+	std::cout << "Darkest secret: " << m_darkest_secret << std::endl;
+	std::cout << "\e[39m";
+}

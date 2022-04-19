@@ -12,10 +12,13 @@ class PhoneBook
 		PhoneBook();
 		void	add(int index);
 		void	search();
+		int		get_nb_contact() const;
+		void	add_contact();
 		~PhoneBook();
 
 	private:
 		Contact	m_contact[8];
+		int		m_nb_contact;
 };
 
 #endif
