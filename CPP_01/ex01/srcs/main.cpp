@@ -13,34 +13,55 @@ void	header(void)
 	std::cout << std::endl << "Enter a command (ADD, SEARCH, EXIT):" << std::endl;
 }
 
+void	disp_prompt(std::string input)
+{
+	if (input != "SEARCH" && input != "ADD")
+	{
+		std::cout << std::endl
+			<< "\e[91mEnter a command (ADD, SEARCH, EXIT):\e[39m"
+				<< std::endl;
+	}
+	else
+	{
+		std::cout << std::endl
+			<< "Enter a command (ADD, SEARCH, EXIT):"
+				<< std::endl;
+	}
+}
+
+void safeGetLine(std::string &input)
+{
+	std::getline(std::cin, input);
+	if (std::cin.fail())
+	{
+		std::cin.clear();
+		std::cin.ignore();
+		std::cout << std::endl << "\e[91mEOF !\e[39m" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	else if (input.empty())
+	{
+		std::cout << "Empty line, please enter a value:" << std::endl;
+		safeGetLine(input);
+	}
+}
+
 int main(void)
 {
 	PhoneBook	phonebook;
-	int			index;
 	std::string	input;
 
-	index = 0;
 	header();
-	while (std::getline(std::cin, input))
+	while (1)
 	{
+		safeGetLine(input);
 		if (input == "ADD")
-		{
-			phonebook.add(index);
-			if (phonebook.get_nb_contact() < 8)
-				phonebook.add_contact();
-			index++;
-			if (index == 8)
-				index = 0;	
-		}
+			phonebook.add();
 		if (input == "SEARCH")
 			phonebook.search();
 		if (input == "EXIT")
-		{
-			std::cout << "\e[92mSelf destruction !\e[39m" << std::endl;
-			return (0);
-		}
-		std::cout << std::endl << "Enter a command (ADD, SEARCH, EXIT):" << std::endl;
+			phonebook.end();
+		disp_prompt(input);
 	}
-	std::cout << std::endl << "\e[91mEOF !\e[39m" << std::endl;
 	return (0);
 }

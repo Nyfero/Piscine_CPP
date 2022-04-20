@@ -21,20 +21,38 @@ void		Contact::set_phone_number(std::string aphone_number)
 void		Contact::set_secret(std::string adarkest_secret)
 { m_darkest_secret = adarkest_secret; }
 
-std::string	Contact::get_first_name() const
-{ return (m_first_name); }
+std::string	Contact::get_first_name()
+{
+	if (m_first_name.size() >= 10)
+	{
+		std::string	tmp(m_first_name);
+		tmp = tmp.substr(0, 9) + ".";
+		return (tmp);
+	}
+	return (m_first_name);
+}
 
-std::string	Contact::get_last_name() const
-{ return (m_last_name); }
+std::string	Contact::get_last_name()
+{
+	if (m_last_name.size() >= 10)
+	{
+		std::string	tmp(m_last_name);
+		tmp = tmp.substr(0, 9) + ".";
+		return (tmp);
+	}
+	return (m_last_name);
+}
 
-std::string	Contact::get_nickname() const
-{ return (m_nickname); }
-
-std::string	Contact::get_phone_number() const
-{ return (m_phone_number); }
-
-std::string	Contact::get_secret() const
-{ return (m_darkest_secret); }
+std::string	Contact::get_nickname()
+{
+	if (m_nickname.size() >= 10)
+	{
+		std::string	tmp(m_nickname);
+		tmp = tmp.substr(0, 9) + ".";
+		return (tmp);
+	}
+	return (m_nickname);
+}
 
 void		Contact::disp_contact() const
 {
