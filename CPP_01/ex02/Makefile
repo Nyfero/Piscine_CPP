@@ -6,7 +6,7 @@
 #    By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 18:36:37 by gsap              #+#    #+#              #
-#    Updated: 2022/04/20 17:02:25 by gsap             ###   ########.fr        #
+#    Updated: 2022/04/20 17:04:57 by gsap             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ else
 endif
 
 #    Files
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS = tests.cpp Account.cpp
 
 #    Compilation
 NAME = PhoneBook
@@ -48,7 +48,7 @@ OBJS = $(patsubst %.cpp,	$(OBJS_PATH)%.o,	$(SRCS))
 #    Rules
 all: $(NAME)
 
-$(NAME): $(OBJS_PATH) $(OBJS) PhoneBook.hpp Contact.hpp
+$(NAME): $(OBJS_PATH) $(OBJS) Account.hpp
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
 	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
@@ -56,7 +56,7 @@ $(NAME): $(OBJS_PATH) $(OBJS) PhoneBook.hpp Contact.hpp
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
 
-$(OBJS_PATH)%.o: %.cpp PhoneBook.hpp Contact.hpp Makefile
+$(OBJS_PATH)%.o: %.cpp Account.hpp Makefile
 	$(HIDE) $(CC) $(CFLAGS) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
 
