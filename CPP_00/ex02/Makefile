@@ -6,7 +6,7 @@
 #    By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 18:36:37 by gsap              #+#    #+#              #
-#    Updated: 2022/04/20 17:04:57 by gsap             ###   ########.fr        #
+#    Updated: 2022/05/03 12:45:20 by gsap             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ endif
 SRCS = tests.cpp Account.cpp
 
 #    Compilation
-NAME = PhoneBook
+NAME = Restore
 
 CC = c++
 
