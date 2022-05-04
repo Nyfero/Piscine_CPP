@@ -13,7 +13,7 @@ class Weapon
 		void		setType(std::string a_type);
 		
 	private:
-		std::string m_type;
+		std::string	m_type;
 };
 
 #endif

@@ -5,6 +5,15 @@
 int main()
 {
 	std::cout << std::endl;
+	std::cout << "\e[92m---WEAPON---\e[39m" << std::endl << std::endl;
+	{
+		Weapon club = Weapon("crude spiked club");
+		std::cout << "Weapon: " << club.getType() << std::endl;
+		club.setType("some other type of club");
+		std::cout << "Weapon: " << club.getType() << std::endl;
+	}
+	
+	std::cout << std::endl;
 	std::cout << "\e[92m---HUMAN A---\e[39m" << std::endl << std::endl;
 	{
 		Weapon club = Weapon("crude spiked club");
@@ -16,14 +25,14 @@ int main()
 	
 	std::cout << std::endl;
 	std::cout << "\e[92m---HUMAN B---\e[39m" << std::endl << std::endl;
-	/*{	
+	{	
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
 		club.setType("some other type of club");
 		jim.attack();
-	}*/
+	}
 
 	std::cout << std::endl;
 	std::cout << "\e[92m---END---\e[39m" << std::endl << std::endl;
