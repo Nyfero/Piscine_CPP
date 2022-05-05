@@ -2,17 +2,17 @@
 
 int main(int ac, char **av)
 {
-	Harl	name;
+	Harl	harl;
 	
-	if (ac == 2)
-		name.complain(av[1]);
+	if (ac >= 2)
+		harl.complain(av[1]);
 	else
 	{
-		std::cout << "---NO ARG---" << std::endl;
-		name.complain("DEBUG");
-		name.complain("INFO");
-		name.complain("WARNING");
-		name.complain("ERROR");
+		std::cout << "\e[91m---NO ARG---\e[39m" << std::endl << std::endl;
+		harl.complain("DEBUG");
+		harl.complain("INFO");
+		harl.complain("WARNING");
+		harl.complain("ERROR");
 	}
 	return (0);
 }
