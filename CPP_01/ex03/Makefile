@@ -36,6 +36,8 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
+DFLAGS = -MMD
+
 RM = rm -rf
 
 OBJS_PATH = objs/
@@ -47,14 +49,16 @@ all: $(NAME)
 
 $(NAME): $(OBJS_PATH) $(OBJS) $(CLASS)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(HIDE) $(CC) $(CFLAGS) $(DFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
+
+-include $(OBJS:%.o=%.d)
 
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp $(CLASS) Makefile
-	$(HIDE) $(CC) $(CFLAGS) -c $< -o $@
+	$(HIDE) $(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
 
 clean:

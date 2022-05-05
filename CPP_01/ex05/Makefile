@@ -18,7 +18,7 @@ else
 endif
 
 #	Includes
-CLASS_PATH = class
+CLASS_PATH = Class
 
 CLASS = $(addprefix $(CLASS_PATH)/, Harl.hpp)
 
@@ -34,7 +34,7 @@ NAME = complain
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
