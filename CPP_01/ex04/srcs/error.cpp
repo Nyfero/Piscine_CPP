@@ -17,3 +17,10 @@ int	error_file(void)
 	std::cout << "Unable to open file" << std::endl;
 	return (1);
 }
+
+int error_empty(void)
+{
+	std::cout << "\e[91m---ERROR---\e[39m" << std::endl;
+	std::cout << "The string cannot be empty !" << std::endl;
+	return (1);
+}

@@ -5,7 +5,7 @@ int main(int ac, char **av)
 	if (ac != 4)
 		return (error_arg());
 	if (read_file(av))
-		return (error_file());
+		return (1);
 	return (0);
 }
 
@@ -22,6 +22,8 @@ int	read_file(char **av)
 	int		ret = 0;
 	int		i;
 
+	if (s1.empty() || s2.empty())
+		return (error_empty());
 	if (rfile.is_open() && ofile.is_open())
 	{
 		while (getline(rfile,line))
@@ -42,6 +44,6 @@ int	read_file(char **av)
 		ofile.close();
 	}
 	else
-		return (1);
+		return (error_file());
 	return (0);
 }
