@@ -6,7 +6,8 @@
 //Stream class to both read and write from/to files.
 # include <fstream>
 
-int	read_file(char **av);
+int				read_file(char **av);
+std::ifstream	open_file(char *av);
 
 int	error_arg(void);
 int	error_file(void);

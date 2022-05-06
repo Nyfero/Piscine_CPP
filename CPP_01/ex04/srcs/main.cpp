@@ -25,11 +25,15 @@ int	read_file(char **av)
 	tmp = file + ".replace";
 	str = tmp.c_str();
 	rfile.open(av[1]);
+	if (rfile.fail())
+		return (error_file());
 	ofile.open(str);
-	if (rfile.fail() || ofile.fail())
+	if (ofile.fail())
 		return (error_file());
 	if (s1.empty() || s2.empty())
 		return (error_empty());
+	
+	
 	if (rfile.is_open() && ofile.is_open())
 	{
 		while (getline(rfile,line))
