@@ -18,25 +18,23 @@ else
 endif
 
 #	Includes
-CLASS_PATH = class
+CLASS_PATH = Class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Weapon.hpp HumanA.hpp HumanB.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, Harl.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+FILES = main.cpp Harl.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Violence
+NAME = complain
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-
-DFLAGS = -MMD
 
 RM = rm -rf
 
@@ -49,16 +47,14 @@ all: $(NAME)
 
 $(NAME): $(OBJS_PATH) $(OBJS) $(CLASS)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(DFLAGS) $(OBJS) -o $(NAME)
+	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
-
--include $(OBJS:%.o=%.d)
 
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp $(CLASS) Makefile
-	$(HIDE) $(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@
+	$(HIDE) $(CC) $(CFLAGS) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
 
 clean:

@@ -10,5 +10,6 @@ int	read_file(char **av);
 
 int	error_arg(void);
 int	error_file(void);
+int	error_empty(void);
 
 #endif
