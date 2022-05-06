@@ -15,13 +15,19 @@ int	read_file(char **av)
 	std::string	s1 = av[2];
 	std::string	s2 = av[3];
 	std::string		line;
-	std::ifstream	rfile(file);
-	std::string		tmp = file;
-	tmp = tmp + ".replace";
-	std::ofstream	ofile(tmp);
+	std::ifstream	rfile;
+	std::ofstream	ofile;
+	std::string		tmp;
+	const char *str;
 	int		ret = 0;
 	int		i;
 
+	tmp = file + ".replace";
+	str = tmp.c_str();
+	rfile.open(av[1]);
+	ofile.open(str);
+	if (rfile.fail() || ofile.fail())
+		return (error_file());
 	if (s1.empty() || s2.empty())
 		return (error_empty());
 	if (rfile.is_open() && ofile.is_open())
