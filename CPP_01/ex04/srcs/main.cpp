@@ -1,6 +1,5 @@
 #include "../inc/replace.h"
 
-
 int main(int ac, char **av)
 {
 	if (ac != 4)
@@ -17,15 +16,20 @@ int	read_file(char **av)
 	std::string		tmp = av[1];
 	tmp = tmp + ".replace";
 	std::ofstream	ofile(tmp);
-	int		i = 0;
+	int 	ret = 0;
+	int i = 1;
 
 	if (rfile.is_open() && ofile.is_open())
 	{
-		while (getline(file,line))
+		while (getline(rfile,line))
 		{
-			
+			std::cout << "(" << i << ") - ";
+			ret = line.find(av[2]);
+			std::cout << ret << std::endl;
+			i++;
 		}
-		file.close();
+		rfile.close();
+		ofile.close();
 	}
 	else
 		return (1);
