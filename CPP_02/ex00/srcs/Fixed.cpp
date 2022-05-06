@@ -1,6 +1,6 @@
 #include "../class/Fixed.hpp"
 
-Fixed::Fixed(): m_fixed(0), m_frac(0)
+Fixed::Fixed(): m_fixed(0)
 {
 	std::cout << "\e[92m---DEFAULT CONSTUCTOR CALL---\e[39m" << std::endl;
 }
@@ -19,6 +19,19 @@ Fixed::Fixed(const Fixed &f)
 Fixed	&Fixed::operator=(const Fixed &f)
 {
 	std::cout << "\e[92m---ASSIGNMENT CONSTUCTOR CALL---\e[39m" << std::endl;
-	(void)f;
+	if (this != &f)
+		m_fixed.setRawBits(f.getRawBits());
 	return (*this);
+}
+
+int		Fixed::getRawBits(void)
+{
+	std::cout << "\e[92m---GETRAWBITS---\e[39m" << std::endl;
+	return (m_fixed);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	std::cout << "\e[92m---SETRAWBITS---\e[39m" << std::endl;
+	m_fixed = raw;
 }
