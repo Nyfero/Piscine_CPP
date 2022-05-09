@@ -15,8 +15,8 @@ class Fixed
 		void	setRawBits(int const raw);
 	
 	private:
-		int	m_fixed;
-		static const int	m_frac;
+		int	m_value;
+		static const int	m_bits = 8;
 };
 
 #endif
