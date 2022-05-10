@@ -12,7 +12,7 @@ class Fixed
 		Fixed();
 		~Fixed();
 		Fixed(Fixed const& src);
-		void	operator=(Fixed const& src);
+		Fixed & operator=(Fixed const& src);
 		//Constructor
 		Fixed(const int nb);
 		Fixed(const float nb);
@@ -23,7 +23,7 @@ class Fixed
 		void	setRawBits(int const raw);
 	
 	private:
-		int	m_value;
+		int		m_value;
 		static const int	m_bits = 8;
 };
 

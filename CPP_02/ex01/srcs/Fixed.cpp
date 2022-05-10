@@ -13,25 +13,26 @@ Fixed::~Fixed()
 Fixed::Fixed(Fixed const& src)
 {
 	std::cout << "\e[92m---Copy Constructor Call---\e[39m" << std::endl;
-	m_value = src.getRawBits();
+	m_value = src.m_value;
 }
 
-void	Fixed::operator=(Fixed const& src)
+Fixed & Fixed::operator=(Fixed const& src)
 {
 	std::cout << "\e[92m---Assignement Constructor Call---\e[39m" << std::endl;
-	m_value = src.getRawBits();
+	m_value = src.m_value;
+	return (*this);
 }
 
 Fixed::Fixed(const int nb)
 {
 	std::cout << "\e[92m---Int Constructor Call---\e[39m" << std::endl;
-	this->setRawBits(nb);
+	this->m_value = (nb << Fixed::m_bits);
 }
 
 Fixed::Fixed(const float nb)
 {
 	std::cout << "\e[92m---Float Constructor Call---\e[39m" << std::endl;
-	this->setRawBits(roundf(nb));
+	this->m_value = roundf(nb * (1 << Fixed::m_bits));
 }
 
 int		Fixed::getRawBits() const
@@ -49,13 +50,13 @@ void	Fixed::setRawBits(int const raw)
 float Fixed::toFloat(void) const
 {
 	// std::cout << "\e[93m---toFloat---\e[39m" << std::endl;
-	return ((float)m_value);
+	return ((float)this->m_value / (float)(1 << Fixed::m_bits));
 }
 
 int Fixed::toInt(void) const
 {
 	// std::cout << "\e[93m---toInt---\e[39m" << std::endl;
-	return (roundf(m_value));
+	return (this->m_value >> Fixed::m_bits);
 }
 
 std::ostream & operator << (std::ostream &out, const Fixed &c)

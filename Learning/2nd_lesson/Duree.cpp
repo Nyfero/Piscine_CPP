@@ -64,5 +64,20 @@ bool	operator>=(Duree const& a, Duree const& b)
 
 Duree	operator+(Duree const& a, Duree const& b)
 {
-	Duree	tmp()
+	Duree	tmp(a.m_heures, a.m_minutes, a.m_secondes);
+	
+	tmp.m_secondes += b.m_secondes;
+	while (tmp.m_secondes >= 60)
+	{
+		tmp.m_minutes++;
+		tmp.m_secondes -= 60;
+	}
+	tmp.m_minutes += b.m_minutes;
+	while (tmp.m_minutes >= 60)
+	{
+		tmp.m_heures++;
+		tmp.m_minutes -= 60;
+	}
+	tmp.heures += b.m_heures;
+	return (tmp);
 }
