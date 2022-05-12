@@ -11,19 +11,19 @@ class Duree
 		void	afficherHeure(void) const;
 		bool	estEgal(Duree const& a) const;
 		bool	estInf(Duree const& a) const;
-		bool	estSupp(Duree const& a) const;
+		bool	estSupp(Duree const& a) const;	
+		
+		bool	operator==(Duree const& b) const;
+		bool	operator>(Duree const& b) const;
+		bool	operator<(Duree const& b) const;
+		bool	operator<=(Duree const& b) const;
+		bool	operator>=(Duree const& b) const;
+		Duree	operator+(Duree const& b) const;
 
 	private:
 		int	m_heures;
 		int	m_minutes;
 		int	m_secondes;
 };
-
-bool	operator==(Duree const& a, Duree const& b);
-bool	operator>(Duree const& a, Duree const& b);
-bool	operator<(Duree const& a, Duree const& b);
-bool	operator<=(Duree const& a, Duree const& b);
-bool	operator>=(Duree const& a, Duree const& b);
-Duree	operator+(Duree const& a, Duree const& b);
 
 #endif

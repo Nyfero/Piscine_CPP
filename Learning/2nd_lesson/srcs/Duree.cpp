@@ -1,4 +1,4 @@
-#include "Duree.hpp"
+#include "../class/Duree.hpp"
  
 Duree::Duree(int heures, int minutes, int secondes)
 {
@@ -39,45 +39,39 @@ bool	Duree::estInf(Duree const& a) const
 bool	Duree::estSupp(Duree const& a) const
 {
 	if (a.m_heures < m_heures)
-		return (false);
+		return (true);
 	if (a.m_minutes < m_minutes)
-		return (false);
-	if (a.m_secondes <= m_secondes)
-		return (false);
-	return (true);
+		return (true);
+	if (a.m_secondes < m_secondes)
+		return (true);
+	return (false);
 }
 
-bool	operator==(Duree const& a, Duree const& b)
-{ return (a.estEgal(b)); }
+bool	Duree::operator==(Duree const& b) const
+{ return (this->estEgal(b)); }
 
-bool	operator>(Duree const& a, Duree const& b)
-{ return (a.estSupp(b)); }
+bool	Duree::operator>(Duree const& b) const
+{ return (this->estSupp(b)); }
 
-bool	operator<(Duree const& a, Duree const& b)
-{ return (a.estInf(b)); }
+bool	Duree::operator<(Duree const& b) const
+{ return (this->estInf(b)); }
 
-bool	operator<=(Duree const& a, Duree const& b)
-{ return (a.estInf(b) || a.estEgal(b)); }
+bool	Duree::operator<=(Duree const& b) const
+{ return (this->estInf(b) || this->estEgal(b)); }
 
-bool	operator>=(Duree const& a, Duree const& b)
-{ return (a.estSupp(b) || a.estEgal(b)); }
+bool	Duree::operator>=(Duree const& b) const
+{ return (this->estSupp(b) || this->estEgal(b)); }
 
-Duree	operator+(Duree const& a, Duree const& b)
+Duree	Duree::operator+(Duree const& b) const
 {
-	Duree	tmp(a.m_heures, a.m_minutes, a.m_secondes);
+	Duree	tmp(m_heures, m_minutes, m_secondes);
 	
 	tmp.m_secondes += b.m_secondes;
-	while (tmp.m_secondes >= 60)
-	{
-		tmp.m_minutes++;
-		tmp.m_secondes -= 60;
-	}
+	tmp.m_minutes += tmp.m_secondes / 60;
+	tmp.m_secondes = tmp.m_secondes % 60;
 	tmp.m_minutes += b.m_minutes;
-	while (tmp.m_minutes >= 60)
-	{
-		tmp.m_heures++;
-		tmp.m_minutes -= 60;
-	}
-	tmp.heures += b.m_heures;
+	tmp.m_heures += tmp.m_minutes / 60;
+	tmp.m_minutes = tmp.m_minutes % 60;
+	tmp.m_heures += b.m_heures;
 	return (tmp);
 }
