@@ -23,3 +23,6 @@ FragTrap::FragTrap(std::string a_name): ClapTrap(a_name)
 	m_mana = 100;
 	m_dmg = 30;
 }
+
+void	FragTrap::highFivesGuys()
+{ std::cout << "\e[95m" << m_name << ": High Fives Guys !\e[39m" << std::endl; }

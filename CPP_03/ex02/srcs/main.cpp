@@ -84,5 +84,36 @@ int main()
 	}
 	std::cout << std::endl;
 	std::cout << "\t\e[91m---SCAVTRAP END---\e[39m" << std::endl << std::endl;
+	
+	std::cout << std::endl;
+	std::cout << "\t\e[92m---FragTrap---\e[39m" << std::endl << std::endl;
+	{
+		FragTrap	a("FragTrap");
+		FragTrap	b("Robert");
+		ClapTrap	c("ClapTrap");
+		ScavTrap	d("ScavTrap");
+		
+		a.attack("Something");
+		b.takeDamage(4);
+		c.attack("Screen");
+		d.attack("RNG");
+		b.beRepaired(1);
+		b.beRepaired(1);
+		b.beRepaired(1);
+		a.beRepaired(5);
+		a.attack("Wall");
+		a.attack("Door");
+		a.attack("Windows");
+		a.takeDamage(10);
+		a.beRepaired(1);
+		a.beRepaired(1);
+		a.attack("Jack");
+		a.beRepaired(1);
+		a.highFivesGuys();
+		b.highFivesGuys();
+		a.beRepaired(1);
+	}
+	std::cout << std::endl;
+	std::cout << "\t\e[91m---FragTrap END---\e[39m" << std::endl << std::endl;
 	return (0);
 }
