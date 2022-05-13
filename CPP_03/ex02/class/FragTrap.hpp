@@ -17,6 +17,7 @@ class FragTrap : public ClapTrap
 		//Constructor
 		FragTrap(std::string a_name);
 		//Functions
+		void	highFivesGuys(void);
 };
 
 #endif

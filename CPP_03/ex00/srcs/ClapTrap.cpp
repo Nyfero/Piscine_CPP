@@ -25,6 +25,12 @@ ClapTrap::ClapTrap(std::string a_name): m_name(a_name), m_life(10), m_mana(10), 
 void	ClapTrap::attack(const std::string& target)
 {
 	std:: cout << m_name << ": try to attack" << std::endl;
+	if (m_life == 0)
+	{
+		std:: cout << m_name << ": "; 
+		DisplayDeath();
+		return;
+	}
 	if (m_mana == 0)
 	{
 		std:: cout << m_name << ": "; 
@@ -54,6 +60,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	std:: cout << m_name << ": try to repair" << std::endl;
+	if (m_life == 0)
+	{
+		std:: cout << m_name << ": "; 
+		DisplayDeath();
+		return ;
+	}
 	if (m_mana == 0)
 	{
 		std:: cout << m_name << ": ";

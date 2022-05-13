@@ -31,6 +31,8 @@ int main()
 		a.beRepaired(1);
 		a.beRepaired(1);
 		a.attack("Jack");
+		b.takeDamage(15);
+		b.beRepaired(1);
 		a.beRepaired(1);
 		a.beRepaired(1);
 		std::cout << "\e[96m---ClapTrap out of energy---\e[39m" << std::endl;

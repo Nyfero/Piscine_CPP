@@ -20,6 +20,6 @@ FragTrap::FragTrap(std::string a_name): ClapTrap(a_name)
 {
 	std::cout << "FragTrap Constructor surcharged call" << std::endl;
 	m_life = 100;
-	m_mana = 50;
-	m_dmg = 20;
+	m_mana = 100;
+	m_dmg = 30;
 }
