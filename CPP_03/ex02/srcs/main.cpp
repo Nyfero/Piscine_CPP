@@ -1,5 +1,6 @@
 #include "../class/ClapTrap.hpp"
 #include "../class/ScavTrap.hpp"
+#include "../class/FragTrap.hpp"
 
 int main()
 {
@@ -15,6 +16,12 @@ int main()
 		{
 			ScavTrap	a;
 			ScavTrap	b(a);
+			a = b;
+		}
+		std::cout << std::endl;
+		{
+			FragTrap	a;
+			FragTrap	b(a);
 			a = b;
 		}
 	}
