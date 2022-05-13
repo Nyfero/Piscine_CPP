@@ -28,10 +28,4 @@ class ClapTrap
 		int		m_dmg;
 };
 
-void	DisplayNoEnergy(void);
-void	DisplayRepaired(void);
-void	DisplayTakeDmg(void);
-void	DisplayAttack(void);
-void	DisplayDeath(void);
-
 #endif

@@ -19,7 +19,8 @@ class ScavTrap : public ClapTrap
 		//Constructor
 		ScavTrap(std::string a_name);
 		//Functions
-		void attack(const std::string& target);
+		void	attack(const std::string& target);
+		void	guardGate();
 };
 
 #endif
