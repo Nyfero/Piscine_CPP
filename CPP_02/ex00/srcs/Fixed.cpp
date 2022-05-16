@@ -7,31 +7,29 @@ Fixed::Fixed(): m_fixed(0)
 
 Fixed::~Fixed()
 {
-	std::cout << "\e[92m---DESTRUCTOR CALL---\e[39m" << std::endl;
+	std::cout << "\e[92m---Destructor Call---\e[39m" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &f)
+Fixed::Fixed(Fixed const& src)
 {
-	std::cout << "\e[92m---COPY CONSTUCTOR CALL---\e[39m" << std::endl;
-	*this = f;
+	std::cout << "\e[92m---Copy Constructor Call---\e[39m" << std::endl;
+	m_value = src.getRawBits();
 }
 
-Fixed	&Fixed::operator=(const Fixed &f)
+void	Fixed::operator=(Fixed const& src)
 {
-	std::cout << "\e[92m---ASSIGNMENT CONSTUCTOR CALL---\e[39m" << std::endl;
-	if (this != &f)
-		m_fixed.setRawBits(f.getRawBits());
-	return (*this);
+	std::cout << "\e[92m---Assignement Constructor Call---\e[39m" << std::endl;
+	m_value = src.getRawBits();
 }
 
-int		Fixed::getRawBits(void)
+int		Fixed::getRawBits() const
 {
-	std::cout << "\e[92m---GETRAWBITS---\e[39m" << std::endl;
-	return (m_fixed);
+	std::cout << "\e[93m---getRawBits---\e[39m" << std::endl;
+	return (m_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "\e[92m---SETRAWBITS---\e[39m" << std::endl;
-	m_fixed = raw;
+	std::cout << "\e[93m---setRawBits---\e[39m" << std::endl;
+	m_value = raw;
 }

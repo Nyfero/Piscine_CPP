@@ -24,7 +24,7 @@ void	Harl::complain(std::string level)
 			this->error();
 		default:
 		{
-			std::cout << "\e[92m---DEFAULT---\e[39m" << std::endl;
+			std::cout << "\e[92m---DEFAULT---\e[39m" << std::endl;	
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 		}
 	}

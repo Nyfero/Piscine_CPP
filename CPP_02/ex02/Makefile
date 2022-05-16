@@ -30,7 +30,7 @@ FILES = main.cpp Fixed.cpp
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Canonique
+NAME = operator
 
 CXX = c++
 
