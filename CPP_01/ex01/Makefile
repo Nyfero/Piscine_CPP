@@ -30,7 +30,7 @@ FILES = main.cpp Zombie.cpp zombieHorde.cpp
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Moar_brainz!
+NAME = ZombieHorde
 
 CC = c++
 

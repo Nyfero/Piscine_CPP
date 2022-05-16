@@ -10,14 +10,14 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << "\e[92m---MEMORY ADDRESS---\e[39m" << std::endl << std::endl;
 	
-	std::cout << "string: " << &string << std::endl;
+	std::cout << "---string: " << &string << std::endl;
 	std::cout << "stringPTR: " << stringPTR << std::endl;
 	std::cout << "stringREF: " << &stringREF << std::endl;
 	
 	std::cout << std::endl;
 	std::cout << "\e[92m---VALUE---\e[39m" << std::endl << std::endl;
 	
-	std::cout << "string: " << string << std::endl;
+	std::cout << "---string: " << string << std::endl;
 	std::cout << "stringPTR: " << *stringPTR << std::endl;
 	std::cout << "stringREF: " << stringREF << std::endl;
 	

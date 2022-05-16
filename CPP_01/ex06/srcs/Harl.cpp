@@ -1,4 +1,4 @@
-#include "../Class/Harl.hpp"
+#include "../class/Harl.hpp"
 
 Harl::Harl()
 {
@@ -21,7 +21,10 @@ void	Harl::complain(std::string level)
 		case 2:
 			this->warning();
 		case 3:
+		{
 			this->error();
+			break;
+		}
 		default:
 		{
 			std::cout << "\e[92m---DEFAULT---\e[39m" << std::endl;	

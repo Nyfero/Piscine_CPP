@@ -1,4 +1,4 @@
-#include "../Class/Harl.hpp"
+#include "../class/Harl.hpp"
 
 Harl::Harl()
 {

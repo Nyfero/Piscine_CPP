@@ -18,6 +18,8 @@ int	main(void)
 	
 	std::cout << "zombie 0: ";
 	horde[0].announce();
+	std::cout << "zombie 3: ";
+	horde[3].announce();
 	
 	std::cout << std::endl;
 	std::cout << "\e[92m---ANNOUNCE ALL---\e[39m" << std::endl << std::endl;

@@ -1,4 +1,4 @@
-#include "Zombie.hpp"
+#include "../class/Zombie.hpp"
 
 int	main(void)
 {
@@ -9,12 +9,12 @@ int	main(void)
 	
 	std::cout << std::endl;
 	std::cout << "\e[92m---RANDOM CHUMP---\e[39m" << std::endl << std::endl;
-	randomChump("Zombie_temp_0");
-	randomChump("Zombie_temp_1");
+	randomChump("Zombie_0");
+	randomChump("Zombie_1");
 	
 	std::cout << std::endl;
 	std::cout << "\e[92m---NEW ZOMBIE---\e[39m" << std::endl << std::endl;
-	Zombie *def = newZombie("Zombie_perma_0");
+	Zombie *def = newZombie("Zombie_0");
 	def->announce();
 	delete def;
 	

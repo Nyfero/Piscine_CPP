@@ -18,7 +18,7 @@ else
 endif
 
 #	Includes
-CLASS_PATH = Class
+CLASS_PATH = class
 
 CLASS = $(addprefix $(CLASS_PATH)/, Harl.hpp)
 

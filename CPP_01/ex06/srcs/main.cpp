@@ -1,4 +1,4 @@
-#include "../Class/Harl.hpp"
+#include "../class/Harl.hpp"
 
 int main(int ac, char **av)
 {
