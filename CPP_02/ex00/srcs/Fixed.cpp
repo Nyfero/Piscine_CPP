@@ -1,6 +1,6 @@
 #include "../class/Fixed.hpp"
 
-Fixed::Fixed(): m_fixed(0)
+Fixed::Fixed(): m_value(0)
 {
 	std::cout << "\e[92m---DEFAULT CONSTUCTOR CALL---\e[39m" << std::endl;
 }
