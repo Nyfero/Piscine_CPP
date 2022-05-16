@@ -17,7 +17,10 @@ class DiamondTrap : public FragTrap, public ScavTrap
 		
 		//Constructor
 		DiamondTrap(std::string a_name);
+		
 		//Functions
+		void	whoAmI();
+		
 	private:
 		std::string 	m_name;
 };

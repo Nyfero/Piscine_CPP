@@ -5,7 +5,7 @@
 # include <string>
 # include <iostream>
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		//Orthodox Canonical Form
