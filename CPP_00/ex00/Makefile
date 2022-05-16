@@ -6,7 +6,7 @@
 #    By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 18:36:37 by gsap              #+#    #+#              #
-#    Updated: 2022/04/12 15:11:39 by gsap             ###   ########.fr        #
+#    Updated: 2022/05/16 15:27:01 by gsap             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRCS = megaphone.cpp
 #    Compilation
 NAME = megaphone
 
-CC = c++
+CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -55,14 +55,14 @@ all: $(NAME)
 
 $(NAME): $(OBJS_PATH) $(OBJS)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(HIDE) $(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
 
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp Makefile
-	$(HIDE) $(CC) $(CFLAGS) -c $< -o $@
+	$(HIDE) $(CXX) $(CFLAGS) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
 
 clean:

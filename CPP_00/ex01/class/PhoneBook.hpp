@@ -1,11 +1,8 @@
-#ifndef PHONE_BOOK_H
-# define PHONE_BOOK_H
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
 
 # include "Contact.hpp"
-# include <string>
 # include <stdlib.h>
-# include <iostream>
-# include <iomanip>
 
 void	safeGetLine(std::string &input);
 

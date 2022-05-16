@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gsap <gsap@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/03/22 18:36:37 by gsap              #+#    #+#              #
-#    Updated: 2022/04/20 17:02:25 by gsap             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #    Colors
 GREY = \e[90m
 RED = \e[91m
@@ -29,35 +17,44 @@ else
     HIDE = @
 endif
 
+#	Includes
+CLASS_PATH = class
+
+CLASS = $(addprefix $(CLASS_PATH)/, PhoneBook.hpp Contact.hpp)
+
 #    Files
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS_PATH = srcs
+
+FILES = main.cpp PhoneBook.cpp Contact.cpp
+
+SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
 NAME = PhoneBook
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
 OBJS_PATH = objs/
 
-OBJS = $(patsubst %.cpp,	$(OBJS_PATH)%.o,	$(SRCS))
+OBJS = $(patsubst $(SRCS_PATH)%.cpp,	$(OBJS_PATH)%.o,	$(SRCS))
 
 #    Rules
 all: $(NAME)
 
-$(NAME): $(OBJS_PATH) $(OBJS) PhoneBook.hpp Contact.hpp
+$(NAME): $(OBJS_PATH) $(OBJS) $(CLASS)
 	@ echo "$(BLUE)\n         ***Make $(NAME) ***\n$(END)"
-	$(HIDE) $(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(HIDE) $(CXX) $(CFLAGS) $(OBJS) -o $(NAME)
 	@ echo "$(GREEN)\n        ---$(NAME) created ---\n$(END)"
 
 $(OBJS_PATH):
 	$(HIDE) mkdir -p $(OBJS_PATH)
 
-$(OBJS_PATH)%.o: %.cpp PhoneBook.hpp Contact.hpp Makefile
-	$(HIDE) $(CC) $(CFLAGS) -c $< -o $@
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.cpp $(CLASS) Makefile
+	$(HIDE) $(CXX) $(CFLAGS) -c $< -o $@
 	@ echo "$(GREEN)[ OK ]$(END) $(CYAN)${<:.s=.o}$(END)"
 
 clean:

@@ -1,8 +1,5 @@
-#include "Contact.hpp"
-#include "PhoneBook.hpp"
-
-#include <string>
-#include <iostream>
+#include "../class/Contact.hpp"
+#include "../class/PhoneBook.hpp"
 
 void	header(void)
 {
