@@ -14,3 +14,12 @@ Animal Animal::operator=(Animal const& src)
 	std::cout << "Animal Constructor by assignement call" << std::endl;
 	return (*this);
 }
+
+Animal::Animal(std::string a_type): m_type(a_type)
+{ std::cout << "Animal Constructor surcharged call" << std::endl; }
+
+void	Animal::makeSound() const
+{ std::cout << "Salut" << std::endl; }
+
+std::string	Animal::getType() const;
+{ return (this->m_type); }
