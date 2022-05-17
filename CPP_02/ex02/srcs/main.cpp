@@ -113,6 +113,5 @@ int main()
 
 	}
 	std::cout << "\t\t\e[91m---END-MIN-MAX---\e[39m" << std::endl << std::endl;
-	
 	return (0);
 }
