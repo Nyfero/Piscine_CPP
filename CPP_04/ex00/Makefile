@@ -20,17 +20,17 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Animal.hpp Dog.hpp Cat.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp
+FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = DiamondTrap
+NAME = Polymorphism
 
 CXX = c++
 

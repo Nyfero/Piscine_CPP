@@ -1,7 +1,10 @@
 #include "../class/Dog.hpp"
 
 Dog::Dog(): Animal()
-{ std::cout << "Dog Constructor by default call" << std::endl; }
+{
+	std::cout << "Dog Constructor by default call" << std::endl;
+	m_type = "Dog";
+}
 
 Dog::~Dog()
 { std::cout << "Dog Destructor call on: " << this->m_type << std::endl; }
@@ -9,9 +12,10 @@ Dog::~Dog()
 Dog::Dog(Dog const& src): Animal(src)
 { std::cout << "Dog Constructor by copy call" << std::endl; }
 
-Dog Dog::operator=(Dog const& src)
+Dog & Dog::operator=(Dog const& src)
 {
 	std::cout << "Dog Constructor by assignement call" << std::endl;
+	Animal::operator=(src);
 	return (*this);
 }
 
