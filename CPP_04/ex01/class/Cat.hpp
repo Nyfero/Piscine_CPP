@@ -2,6 +2,7 @@
 # define CAT_HPP
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 # include <string>
 # include <iostream>
 
@@ -13,8 +14,11 @@ class	Cat: public Animal
 		Cat(Cat const& src);
 		Cat & operator=(Cat const& src);
 		Cat(std::string a_type);
-		
+
 		virtual void 	makeSound() const;
+
+	private:
+		Brain	*m_CatBrain;
 };
 
 #endif
