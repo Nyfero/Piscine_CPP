@@ -1,6 +1,6 @@
 #include "../class/Cat.hpp"
 
-Cat::Cat(): Animal()
+Cat::Cat(): A_Animal()
 {
 	std::cout << "Cat Constructor by default call" << std::endl;
 	m_type = "Cat";
@@ -13,7 +13,7 @@ Cat::~Cat()
 	delete this->m_brain;
 }
 
-Cat::Cat(Cat const& src): Animal(src)
+Cat::Cat(Cat const& src): A_Animal(src)
 {
 	std::cout << "Cat Constructor by copy call" << std::endl;
 	this->m_brain = new Brain(*src.m_brain);
@@ -22,13 +22,13 @@ Cat::Cat(Cat const& src): Animal(src)
 Cat & Cat::operator=(Cat const& src)
 {
 	std::cout << "Cat Constructor by assignement call" << std::endl;
-	Animal::operator=(src);
+	A_Animal::operator=(src);
 	delete this->m_brain;
 	this->m_brain = new Brain(*src.m_brain);
 	return (*this);
 }
 
-Cat::Cat(std::string a_type): Animal(a_type)
+Cat::Cat(std::string a_type): A_Animal(a_type)
 {
 	std::cout << "Cat Constructor surcharged call" << std::endl;
 	this->m_type = "Cat";
