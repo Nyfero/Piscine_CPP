@@ -31,8 +31,10 @@ int main()
 			std::cout << std::endl;
 		}
 
-		std::cout << std::endl;
+		std::cout << t[4]->getType() << " " << std::endl;
 		t[4]->makeSound();
+		std::cout << std::endl;
+		std::cout << t[8]->getType() << " " << std::endl;
 		t[8]->makeSound();
 		std::cout << std::endl;
 
@@ -50,27 +52,42 @@ int main()
 	{
 		{
 			Animal	animal;
+			std::cout << animal.getType() << " " << std::endl;
 			animal.makeSound();
 		}
 		std::cout << std::endl;
 		{
 			Dog		dog;
+			std::cout << dog.getType() << " " << std::endl;
 			dog.makeSound();
 		}
 		std::cout << std::endl;
 		{
 			Cat		cat;
+			std::cout << cat.getType() << " " << std::endl;
 			cat.makeSound();
+			cat.setIdeas();
+			cat.printIdeas();
+			
+			Cat		copycat;
+			copycat.printIdeas();
+			copycat = cat;
+			copycat.printIdeas();
+			
+			Cat		secondcat(cat);
+			secondcat.printIdeas();
 		}
-			std::cout << std::endl;
-		{
-			WrongCat		wrongcat;
-			wrongcat.makeSound();
-		}
-			std::cout << std::endl;
+		std::cout << std::endl;
 		{
 			WrongAnimal		wronganimal;
+			std::cout << wronganimal.getType() << " " << std::endl;
 			wronganimal.makeSound();
+		}
+		std::cout << std::endl;		
+		{
+			WrongCat		wrongcat;
+			std::cout << wrongcat.getType() << " " << std::endl;
+			wrongcat.makeSound();
 		}
 	}
 	std::cout << std::endl;

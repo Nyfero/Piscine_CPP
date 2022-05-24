@@ -15,10 +15,12 @@ class	Cat: public Animal
 		Cat & operator=(Cat const& src);
 		Cat(std::string a_type);
 
-		virtual void 	makeSound() const;
+		virtual void	makeSound() const;
+		void			setIdeas();
+		void			printIdeas() const;
 
 	private:
-		Brain	*m_CatBrain;
+		Brain	*m_brain;
 };
 
 #endif

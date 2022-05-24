@@ -4,26 +4,27 @@ Dog::Dog(): Animal()
 {
 	std::cout << "Dog Constructor by default call" << std::endl;
 	this->m_type = "Dog";
-	this->m_DogBrain = new Brain();
+	this->m_brain = new Brain();
 }
 
 Dog::~Dog()
 {
-	std::cout << "Dog Destructor call on: " << this->m_type << std::endl;
-	delete	this->m_DogBrain;
+	std::cout << "Dog Destructor call" << std::endl;
+	delete	this->m_brain;
 }
 
 Dog::Dog(Dog const& src): Animal(src)
 {
 	std::cout << "Dog Constructor by copy call" << std::endl;
-	this->m_DogBrain = new Brain();
+	this->m_brain = new Brain(*src.m_brain);
 }
 
 Dog & Dog::operator=(Dog const& src)
 {
 	std::cout << "Dog Constructor by assignement call" << std::endl;
 	Animal::operator=(src);
-	this->m_DogBrain = new Brain();
+	delete this->m_brain;
+	this->m_brain = new Brain(*src.m_brain);
 	return (*this);
 }
 
@@ -31,7 +32,7 @@ Dog::Dog(std::string a_type): Animal(a_type)
 {
 	std::cout << "Dog Constructor surcharged call" << std::endl;
 	this->m_type = "Dog";
-	this->m_DogBrain = new Brain();
+	this->m_brain = new Brain();
 }
 
 void	Dog::makeSound() const
