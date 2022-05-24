@@ -16,27 +16,35 @@ int main()
 	}
 	std::cout << std::endl;
 	std::cout << "\t\e[91m---MAIN-PROVIDED---\e[39m" << std::endl << std::endl;
-	
+
 	std::cout << std::endl;
 	std::cout << "\t\e[92m---MAIN-CUSTOM---\e[39m" << std::endl << std::endl;
 	{
-		const WrongAnimal* meta = new WrongAnimal();
-		const WrongAnimal* i = new WrongCat();
+		Animal *t[10];
+
+		for (int i = 0; i < 10; i++)
+		{
+			if (i < 5)
+				t[i] = new Cat;
+			else
+				t[i] = new Dog;
+			std::cout << std::endl;
+		}
 
 		std::cout << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound();//will output the wrong cat sound!
-		std::cout << std::endl;
-		std::cout << meta->getType() << " " << std::endl;
-		meta->makeSound();//will output the wrong animal sound!
+		t[4]->makeSound();
+		t[8]->makeSound();
 		std::cout << std::endl;
 
-		delete meta;
-		delete i;
+		for (int i = 0; i < 10; i++)
+		{
+			delete t[i];
+			std::cout << std::endl;
+		}
 	}
 	std::cout << std::endl;
 	std::cout << "\t\e[91m---MAIN-CUSTOM---\e[39m" << std::endl << std::endl;
-	
+
 	std::cout << std::endl;
 	std::cout << "\t\e[92m---TEST---\e[39m" << std::endl << std::endl;
 	{
@@ -68,6 +76,6 @@ int main()
 	std::cout << std::endl;
 	std::cout << "\t\e[91m---TEST---\e[39m" << std::endl << std::endl;
 
-	
+
 	return (0);
 }

@@ -10,11 +10,15 @@ class Point
 		~Point();
 		Point(Point const& src);
 		Point & operator=(Point const& src);
-		
+
 		Point(const float a_x, const float a_y);
+		Fixed	getX() const;
+		Fixed	getY() const;
 	private:
 		Fixed	m_x;
 		Fixed	m_y;
 };
+
+void sort(Point *a, Point *b, Point *c);
 
 #endif

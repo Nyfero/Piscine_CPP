@@ -20,12 +20,12 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Fixed.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, Fixed.hpp Point.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Fixed.cpp
+FILES = main.cpp Fixed.cpp Point.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
