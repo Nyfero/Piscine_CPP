@@ -12,7 +12,7 @@ class	Brain
 		Brain(Brain const& src);
 		Brain & operator=(Brain const& src);
 		
-	private:
+	protected:
 		std::string	m_ideas[100];
 };
 

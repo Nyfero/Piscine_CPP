@@ -9,23 +9,9 @@ int main()
 	std::cout << std::endl;
 	std::cout << "\t\e[92m---MAIN-PROVIDED---\e[39m" << std::endl << std::endl;
 	{
-		const Animal* meta = new Animal();
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
-
-		std::cout << std::endl;
-		std::cout << j->getType() << " " << std::endl;
-		j->makeSound(); //will output the cat sound!
-		std::cout << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound();//will output the dog sound!
-		std::cout << std::endl;
-		std::cout << meta->getType() << " " << std::endl;
-		meta->makeSound();//will output the animal sound!
-		std::cout << std::endl;
-
-		delete meta;
-		delete j;
+		delete j;//should not create a leak
 		delete i;
 	}
 	std::cout << std::endl;
