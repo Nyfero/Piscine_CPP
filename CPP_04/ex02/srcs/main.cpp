@@ -9,7 +9,7 @@ int main()
 	std::cout << std::endl;
 	std::cout << "\t\e[92m---MAIN---\e[39m" << std::endl << std::endl;
 	{
-		// A_Animal	animal;
+		//A_Animal	animal;
 
 		std::cout << "=============OTHER TEST============" <<std::endl;
 

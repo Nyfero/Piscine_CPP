@@ -15,8 +15,8 @@ class Point
 		Fixed	getX() const;
 		Fixed	getY() const;
 	private:
-		Fixed	m_x;
-		Fixed	m_y;
+		Fixed const	m_x;
+		Fixed const	m_y;
 };
 
 void sort(Point *a, Point *b, Point *c);
