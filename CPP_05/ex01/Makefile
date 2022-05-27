@@ -20,17 +20,17 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Bureaucrat.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, Bureaucrat.hpp Form.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Bureaucrat.cpp
+FILES = main.cpp Bureaucrat.cpp Form.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Bureaucrat
+NAME = Form
 
 CXX = c++
 

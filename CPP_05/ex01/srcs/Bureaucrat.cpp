@@ -52,5 +52,15 @@ void	Bureaucrat::DemoteGrade()
 	this->m_grade++;
 }
 
+void	Bureaucrat::signForm(Form const& src)
+{
+	std::cout << this->m_name << " has signed " << src.GetName() << " ?" << std::endl;
+	if (src.IsSigned() == true)
+		std::cout << this->m_name << " signed " << src.GetName() << std::endl;
+	else
+		std::cout << this->m_name << " couldn't sign " << src.GetName() << " because he is to low level" << std::endl;
+		
+}
+
 std::ostream & operator << (std::ostream &out, const Bureaucrat &c)
 { return (out << c.GetName() << ", bureaucrat grade " << c.GetGrade()); }

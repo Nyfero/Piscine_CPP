@@ -1,94 +1,48 @@
 # include "../class/Bureaucrat.hpp"
+# include "../class/Form.hpp"
 
 int main()
 {
 	std::cout << std::endl;
-	std::cout << "\t\e[92m---INIT---\e[39m" << std::endl << std::endl;
-	try
+	std::cout << "\t\e[92m---MAIN---\e[39m" << std::endl << std::endl;
 	{
+		Form		declaration("Déclaration d'impôts", 15, 40);
+		Form		nuclear("Attaque Nucléaire", 1, 1);
+		
 		Bureaucrat	boss("boss", 1);
-		std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
-		std::cout << "\e[93m" << boss << "\e[39m" << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	try
-	{
 		Bureaucrat	stagiaire("stagiaire", 150);
-		std::cout << stagiaire.GetName() << ": " << stagiaire.GetGrade() << std::endl;
-		std::cout << "\e[93m" << stagiaire << "\e[39m" << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	try
-	{
-		Bureaucrat	erreurlow("erreurlow", 151);
-		std::cout << erreurlow.GetName() << ": " << erreurlow.GetGrade() << std::endl;
-		std::cout << "\e[93m" << erreurlow << "\e[39m" << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	try
-	{
-		Bureaucrat	erreurtop("erreurtop", 0);
-		std::cout << erreurtop.GetName() << ": " << erreurtop.GetGrade() << std::endl;
-		std::cout << "\e[93m" << erreurtop << "\e[39m" << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	std::cout << "\t\e[91m---INIT---\e[39m" << std::endl << std::endl;
-	
-	std::cout << std::endl;
-	std::cout << "\t\e[92m---Promote/Demote---\e[39m" << std::endl << std::endl;
-	try
-	{
-		Bureaucrat	boss("boss", 1);
-		std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
-		std::cout << "\e[93m" << boss << "\e[39m" << std::endl;
-		boss.DemoteGrade();
-		std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
-		boss.PromoteGrade();
-		std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
-		boss.PromoteGrade();
-		std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
+		
+		std::cout << std::endl;
+		try
+		{
+			std::cout << "\e[93m" << boss << "\e[39m" << std::endl;
+			declaration.beSigned(boss);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << "To low level: " << e.what() << std::endl;
+		}
+		std::cout << "\e[93m" << declaration << "\e[39m" << std::endl << std::endl;
+		
+		try
+		{
+			std::cout << "\e[93m" << stagiaire << "\e[39m" << std::endl;
+			nuclear.beSigned(stagiaire);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << "To low level: " << e.what() << std::endl;
+		}
+		std::cout << "\e[93m" << nuclear << "\e[39m" << std::endl << std::endl;
+		
+		boss.signForm(declaration);
+		boss.signForm(nuclear);
+		std::cout << std::endl;
+		stagiaire.signForm(declaration);
+		stagiaire.signForm(nuclear);
+		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-	try
-	{
-		Bureaucrat	stagiaire("stagiaire", 150);
-		std::cout << stagiaire.GetName() << ": " << stagiaire.GetGrade() << std::endl;
-		std::cout << "\e[93m" << stagiaire << "\e[39m" << std::endl;
-		stagiaire.PromoteGrade();
-		std::cout << stagiaire.GetName() << ": " << stagiaire.GetGrade() << std::endl;
-		stagiaire.DemoteGrade();
-		std::cout << stagiaire.GetName() << ": " << stagiaire.GetGrade() << std::endl;
-		stagiaire.DemoteGrade();
-		std::cout << stagiaire.GetName() << ": " << stagiaire.GetGrade() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	
-	std::cout << std::endl;
-	std::cout << "\t\e[91m---Promote/Demote---\e[39m" << std::endl << std::endl;
-	
-	
+	std::cout << "\t\e[91m---MAIN---\e[39m" << std::endl << std::endl;
 	return (0);
 }
