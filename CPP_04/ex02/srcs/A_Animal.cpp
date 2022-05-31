@@ -1,5 +1,9 @@
 #include "../class/A_Animal.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 A_Animal::A_Animal(): m_type("A_Animal")
 { std::cout << "A_Animal Constructor by default call" << std::endl; }
 
@@ -16,8 +20,16 @@ A_Animal & A_Animal::operator=(A_Animal const& src)
 	return (*this);
 }
 
+//				//
+//	Constructor	//
+//				//
+
 A_Animal::A_Animal(std::string a_type): m_type(a_type)
 { std::cout << "A_Animal Constructor surcharged call" << std::endl; }
+
+//				//
+//	Functions	//
+//				//
 
 std::string	A_Animal::getType() const
 { return (this->m_type); }

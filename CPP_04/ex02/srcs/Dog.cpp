@@ -1,5 +1,9 @@
 #include "../class/Dog.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 Dog::Dog(): A_Animal()
 {
 	std::cout << "Dog Constructor by default call" << std::endl;
@@ -22,18 +26,25 @@ Dog::Dog(Dog const& src): A_Animal(src)
 Dog & Dog::operator=(Dog const& src)
 {
 	std::cout << "Dog Constructor by assignement call" << std::endl;
-	A_Animal::operator=(src);
+	this->m_type = src.m_type;
 	delete this->m_brain;
 	this->m_brain = new Brain(*src.m_brain);
 	return (*this);
 }
 
+//				//
+//	Constructor	//
+//				//
+
 Dog::Dog(std::string a_type): A_Animal(a_type)
 {
 	std::cout << "Dog Constructor surcharged call" << std::endl;
-	this->m_type = "Dog";
 	this->m_brain = new Brain();
 }
+
+//				//
+//	Functions	//
+//				//
 
 void	Dog::makeSound() const
 { std::cout << "Bark Bark Bark" << std::endl; }

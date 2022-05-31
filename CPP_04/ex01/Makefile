@@ -30,7 +30,7 @@ FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.c
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Polymorphism
+NAME = Brainmorphism
 
 CXX = c++
 

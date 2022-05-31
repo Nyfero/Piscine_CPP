@@ -1,5 +1,9 @@
 #include "../class/Cat.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 Cat::Cat(): A_Animal()
 {
 	std::cout << "Cat Constructor by default call" << std::endl;
@@ -22,18 +26,25 @@ Cat::Cat(Cat const& src): A_Animal(src)
 Cat & Cat::operator=(Cat const& src)
 {
 	std::cout << "Cat Constructor by assignement call" << std::endl;
-	A_Animal::operator=(src);
+	this->m_type = src.m_type;
 	delete this->m_brain;
 	this->m_brain = new Brain(*src.m_brain);
 	return (*this);
 }
 
+//				//
+//	Constructor	//
+//				//
+
 Cat::Cat(std::string a_type): A_Animal(a_type)
 {
 	std::cout << "Cat Constructor surcharged call" << std::endl;
-	this->m_type = "Cat";
 	this->m_brain = new Brain();
 }
+
+//				//
+//	Functions	//
+//				//
 
 void	Cat::makeSound() const
 { std::cout << "Miaou" << std::endl; }

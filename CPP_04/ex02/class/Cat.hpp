@@ -8,19 +8,24 @@
 
 class	Cat: public A_Animal
 {
+	private:
+		Brain	*m_brain;
+
 	public:
+		//Orthodox Canonical Form
 		Cat();
 		virtual ~Cat();
 		Cat(Cat const& src);
 		Cat & operator=(Cat const& src);
+		
+		//Constructor
 		Cat(std::string a_type);
 
+		//Functions
 		virtual void	makeSound() const;
 		void			setIdeas();
 		void			printIdeas() const;
 
-	private:
-		Brain	*m_brain;
 };
 
 #endif

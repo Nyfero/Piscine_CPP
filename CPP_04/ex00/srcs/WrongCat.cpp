@@ -19,7 +19,7 @@ WrongCat::WrongCat(WrongCat const& src): WrongAnimal(src)
 WrongCat & WrongCat::operator=(WrongCat const& src)
 {
 	std::cout << "WrongCat Constructor by assignement call" << std::endl;
-	WrongAnimal::operator=(src);
+	m_type = src.m_type;
 	return (*this);
 }
 

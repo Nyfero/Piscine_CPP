@@ -1,5 +1,9 @@
 # include "../class/Brain.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 Brain::Brain()
 { std::cout << "Brain Constructor by default call" << std::endl; }
 
@@ -26,6 +30,10 @@ Brain & Brain::operator=(Brain const& src)
 		this->m_ideas[i] = src.m_ideas[i];
 	return (*this);
 }
+
+//				//
+//	Functions	//
+//				//
 
 void	Brain::printIdeas()
 {

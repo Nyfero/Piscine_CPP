@@ -19,7 +19,7 @@ Cat::Cat(Cat const& src): Animal(src)
 Cat & Cat::operator=(Cat const& src)
 {
 	std::cout << "Cat Constructor by assignement call" << std::endl;
-	Animal::operator=(src);
+	m_type = src.m_type;
 	return (*this);
 }
 

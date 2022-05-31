@@ -6,20 +6,22 @@
 
 class	Animal
 {
-	private:
+	protected:
+		std::string	m_type;
+	
+	public:
+		//Orthodox Canonical Form
 		Animal();
 		virtual ~Animal();
 		Animal(Animal const& src);
 		Animal & operator=(Animal const& src);
+		
+		//Constructor
 		Animal(std::string a_type);
 	
-	public:
-		
+		//Functions
 		virtual void	makeSound() const;
 		std::string		getType() const;
-
-	protected:
-		std::string	m_type;
 };
 
 #endif

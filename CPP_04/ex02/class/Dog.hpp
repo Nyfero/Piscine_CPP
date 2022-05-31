@@ -8,17 +8,22 @@
 
 class	Dog: public A_Animal
 {
+	private:
+		Brain	*m_brain;
+
 	public:
+		//Orthodox Canonical Form
 		Dog();
 		virtual ~Dog();
 		Dog(Dog const& src);
 		Dog & operator=(Dog const& src);
+		
+		//Constructor
 		Dog(std::string a_type);
 
+		//Functions
 		virtual void 	makeSound() const;
 
-	private:
-		Brain *m_brain;
 };
 
 #endif

@@ -19,7 +19,7 @@ Dog::Dog(Dog const& src): Animal(src)
 Dog & Dog::operator=(Dog const& src)
 {
 	std::cout << "Dog Constructor by assignement call" << std::endl;
-	Animal::operator=(src);
+	m_type = src.m_type;
 	return (*this);
 }
 
