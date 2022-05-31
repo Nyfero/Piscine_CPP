@@ -1,5 +1,9 @@
 # include "../class/Bureaucrat.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 Bureaucrat::Bureaucrat(std::string a_name, int a_grade): m_name(a_name)
 {
 	if (a_grade <= 0)
@@ -24,17 +28,32 @@ Bureaucrat & Bureaucrat::operator=(Bureaucrat const& src)
 	return (*this);
 }
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{ return ("\e[0;31mGrade is too high\e[0m"); }
-
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{ return ("\e[0;31mGrade is too low\e[0m"); }
+//			//
+//	Getter	//
+//			//
 
 std::string	Bureaucrat::GetName() const
 { return this->m_name; }
 
 int Bureaucrat::GetGrade() const
 { return this->m_grade; }
+
+std::ostream & operator << (std::ostream &out, const Bureaucrat &c)
+{ return (out << c.GetName() << ", bureaucrat grade " << c.GetGrade()); }
+
+//			//
+//	throw	//
+//			//
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{ return ("\e[0;31mGrade is too high\e[0m"); }
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{ return ("\e[0;31mGrade is too low\e[0m"); }
+
+//				//
+//	Functions	//
+//				//
 
 void	Bureaucrat::PromoteGrade()
 {
@@ -52,15 +71,23 @@ void	Bureaucrat::DemoteGrade()
 	this->m_grade++;
 }
 
-void	Bureaucrat::signForm(A_Form const& src)
+void	Bureaucrat::signForm(A_Form & src)
 {
-	std::cout << this->m_name << " has signed " << src.GetName() << " ?" << std::endl;
+	src.beSigned(*this);
 	if (src.IsSigned() == true)
 		std::cout << this->m_name << " signed " << src.GetName() << std::endl;
 	else
 		std::cout << this->m_name << " couldn't sign " << src.GetName() << " because he is to low level" << std::endl;
-		
 }
 
-std::ostream & operator << (std::ostream &out, const Bureaucrat &c)
-{ return (out << c.GetName() << ", bureaucrat grade " << c.GetGrade()); }
+void	Bureaucrat::executeForm(A_Form & src)
+{
+	std::cout << this->m_name << " execute " << src.GetName() << " ?" << std::endl;
+	if (this->m_grade <= src.GetSign())
+	{
+		std::cout << this->m_name << " execute " << src.GetName() << std::endl;
+		src.execute();
+	}
+	else
+	{ std::cout << this->m_name << " can't execute " << src.GetName() << std::endl; }	
+}

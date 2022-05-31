@@ -20,19 +20,17 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Bureaucrat.hpp A_Form.hpp \
-	ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, Figure.hpp Triangle.hpp Carre.hpp Rectangle.hpp Cercle.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Bureaucrat.cpp A_Form.cpp ShrubberyCreationForm.cpp \
-	RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+FILES = main.cpp Figure.cpp Triangle.cpp Carre.cpp Rectangle.cpp Cercle.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = AbstractForm
+NAME = OpenClassRoom
 
 CXX = c++
 

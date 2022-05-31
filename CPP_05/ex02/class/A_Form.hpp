@@ -19,14 +19,15 @@ class A_Form
 		A_Form(std::string a_name, int a_sign, int a_exec);
 		A_Form(A_Form const& src);
 		A_Form & operator=(A_Form const& src);
-		~A_Form();
+		virtual ~A_Form();
 		
 		std::string	GetName() const;
 		bool		IsSigned() const;
 		int			GetSign() const;
 		int			GetExec() const;
 		
-		void		beSigned(Bureaucrat const& src);
+		void			beSigned(Bureaucrat & src);
+		virtual void	execute() const = 0;
 		
 		class GradeTooHighException : public std::exception
 		{

@@ -4,31 +4,21 @@
 # include "A_Form.hpp"
 # include <string>
 # include <iostream>
+# include <fstream>
 
-class A_Form;
-
-class ShrubberyCreationForm
+class ShrubberyCreationForm : public A_Form
 {
-	protected:
-		ShrubberyCreationForm();
+	private:
+		std::string	m_target;
 
 	public:
-		ShrubberyCreationForm(std::string a_name, int a_grade);
+		ShrubberyCreationForm(std::string a_target);
 		ShrubberyCreationForm(ShrubberyCreationForm const& src);
 		ShrubberyCreationForm & operator=(ShrubberyCreationForm const& src);
 		~ShrubberyCreationForm();
-	
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
-
-		class GradeTooLowException: public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
+		
+		virtual void	execute() const;
+		std::string		GetTarget() const;
 };
 
 std::ostream & operator << (std::ostream &out, const ShrubberyCreationForm &c);
