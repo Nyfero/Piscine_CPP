@@ -1,7 +1,16 @@
 #include "../class/ScavTrap.hpp"
 
+//					//
+//	Canonical Form	//
+//					//
+
 ScavTrap::ScavTrap(): ClapTrap()
-{ std::cout << "ScavTrap Constructor by default call" << std::endl; }
+{
+	std::cout << "ScavTrap Constructor by default call" << std::endl;
+	m_life = 100;
+	m_mana = 50;
+	m_dmg = 20;
+}
 
 ScavTrap::~ScavTrap()
 { std::cout << "ScavTrap Destructor call on: " << m_name << std::endl; }
@@ -11,10 +20,14 @@ ScavTrap::ScavTrap(ScavTrap const& src): ClapTrap(src)
 
 ScavTrap & ScavTrap::operator=(ScavTrap const& src)
 {
-	std::cout << "ScavTrap Constructor by copy assignement call" << std::endl;
 	ClapTrap::operator=(src);
+	std::cout << "ScavTrap Constructor by copy assignement call" << std::endl;
 	return (*this);
 }
+
+//				//
+//	Constructor	//
+//				//
 
 ScavTrap::ScavTrap(std::string a_name): ClapTrap(a_name)
 {
@@ -23,6 +36,10 @@ ScavTrap::ScavTrap(std::string a_name): ClapTrap(a_name)
 	m_mana = 50;
 	m_dmg = 20;
 }
+
+//				//
+//	Functions	//
+//				//
 
 void	ScavTrap::attack(const std::string& target)
 {

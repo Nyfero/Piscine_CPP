@@ -1,6 +1,9 @@
 #include "../class/ClapTrap.hpp"
+//					//
+//	Canonical Form	//
+//					//
 
-ClapTrap::ClapTrap(): m_name("NULL"), m_life(10), m_mana(10), m_dmg(0)
+ClapTrap::ClapTrap(): m_name("ClapTrap"), m_life(10), m_mana(10), m_dmg(0)
 { std::cout << "Constructor by default call" << std::endl; }
 
 ClapTrap::~ClapTrap()
@@ -19,8 +22,16 @@ ClapTrap & ClapTrap::operator=(ClapTrap const& src)
 	return (*this);
 }
 
+//				//
+//	Constructor	//
+//				//
+
 ClapTrap::ClapTrap(std::string a_name): m_name(a_name), m_life(10), m_mana(10), m_dmg(0)
 { std::cout << "Constructor surcharged call" << std::endl; }
+
+//				//
+//	Functions	//
+//				//
 
 void	ClapTrap::attack(const std::string& target)
 {
@@ -77,6 +88,10 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	m_mana--;
 	m_life += amount;
 }
+
+//			//
+//	Display	//
+//			//
 
 void	DisplayNoEnergy(void)
 {

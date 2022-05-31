@@ -1,10 +1,14 @@
 #include "../class/ClapTrap.hpp"
 
-ClapTrap::ClapTrap(): m_name("NULL"), m_life(10), m_mana(10), m_dmg(0)
+//					//
+//	Canonical Form	//
+//					//
+
+ClapTrap::ClapTrap(): m_name("ClapTrap"), m_life(10), m_mana(10), m_dmg(0)
 { std::cout << "ClapTrap Constructor by default call" << std::endl; }
 
 ClapTrap::~ClapTrap()
-{ std::cout << "ClapTrap Destructor call on: " << m_name << std::endl; }
+{ std::cout << "ClapTrap Destructor call" << std::endl; }
 
 ClapTrap::ClapTrap(ClapTrap const& src): m_name(src.m_name),  m_life(src.m_life), m_mana(src.m_mana), m_dmg(src.m_dmg)
 { std::cout << "ClapTrap Constructor by copy call" << std::endl; }
@@ -19,8 +23,16 @@ ClapTrap & ClapTrap::operator=(ClapTrap const& src)
 	return (*this);
 }
 
+//				//
+//	Constructor	//
+//				//
+
 ClapTrap::ClapTrap(std::string a_name): m_name(a_name), m_life(10), m_mana(10), m_dmg(0)
 { std::cout << "ClapTrap Constructor surcharged call" << std::endl; }
+
+//				//
+//	Functions	//
+//				//
 
 void	ClapTrap::attack(const std::string& target)
 {

@@ -11,8 +11,11 @@ int main()
 		std::cout << std::endl;
 		{
 			DiamondTrap	a;
+			std::cout << std::endl;
 			DiamondTrap	b(a);
+			std::cout << std::endl;
 			a = b;
+			std::cout << std::endl;
 		}
 	}
 	std::cout << std::endl;
