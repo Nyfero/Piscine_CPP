@@ -55,27 +55,27 @@ int main()
 	std::cout << "\t\e[92m---TEST---\e[39m" << std::endl << std::endl;
 	{
 		{
-			Animal	animal;
+			Animal	animal("humain");
 			animal.makeSound();
 		}
 		std::cout << std::endl;
 		{
-			Dog		dog;
+			Dog		dog("Bob");
 			dog.makeSound();
 		}
 		std::cout << std::endl;
 		{
-			Cat		cat;
+			Cat		cat("Felix");
 			cat.makeSound();
 		}
 			std::cout << std::endl;
 		{
-			WrongCat		wrongcat;
+			WrongCat		wrongcat("Pachat");
 			wrongcat.makeSound();
 		}
 			std::cout << std::endl;
 		{
-			WrongAnimal		wronganimal;
+			WrongAnimal		wronganimal("Pahumain");
 			wronganimal.makeSound();
 		}
 	}

@@ -1,4 +1,5 @@
 #include "../class/ClapTrap.hpp"
+
 //					//
 //	Canonical Form	//
 //					//
