@@ -6,16 +6,14 @@ Point::Point(): m_x(0), m_y(0)
 Point::~Point()
 {}
 
-Point::Point(Point const& src)
+Point::Point(Point const& src): m_x(0), m_y(0)
 {
-	this->m_x = src.m_x;
-	this->m_y = src.m_y;
+	(void)src;
 }
 
 Point & Point::operator=(Point const& src)
 {
-	m_x = src.m_x;
-	m_y = src.m_y;
+	(void)src;
 	return (*this);
 }
 

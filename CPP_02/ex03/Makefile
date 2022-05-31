@@ -25,7 +25,7 @@ CLASS = $(addprefix $(CLASS_PATH)/, Fixed.hpp Point.hpp)
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Fixed.cpp Point.cpp
+FILES = main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 

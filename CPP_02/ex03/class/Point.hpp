@@ -19,6 +19,7 @@ class Point
 		Fixed const	m_y;
 };
 
-void sort(Point *a, Point *b, Point *c);
+bool	bsp(Point a, Point b, Point c, Point point);
+Fixed	scalar_product(Point a, Point b, Point c);
 
 #endif
