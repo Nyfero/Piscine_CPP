@@ -42,11 +42,14 @@ std::ostream & operator << (std::ostream &out, const A_Form &c)
 //	throw	//
 //			//
 
-const char* A_Form::GradeTooHighException::what() const throw()
-{ return ("\e[91mGrade is too high it' s out of your bounds\e[39m"); }
+const char* A_Form::GradeTooLowExecute::what() const throw()
+{ return ("\e[91mGrade is too low to execute\e[39m"); }
 
-const char* A_Form::GradeTooLowException::what() const throw()
-{ return ("\e[91mGrade is too low it' s out of your bounds\e[39m"); }
+const char* A_Form::GradeTooLowSigned::what() const throw()
+{ return ("\e[91mGrade is too low to signed\e[39m"); }
+
+const char* A_Form::FormNotSigned::what() const throw()
+{ return ("\e[91mThe Form isn't signed yet\e[39m"); }
 
 //				//
 //	Functions	//
@@ -56,6 +59,6 @@ void A_Form::beSigned(Bureaucrat & src)
 {
 	std::cout << src.GetName() << " sign " << this->m_name << " ?" << std::endl;
 	if (src.GetGrade() > this->m_sign)
-		throw GradeTooLowException();
+		throw GradeTooLowSigned();
 	this->m_isSigned = true;
 }

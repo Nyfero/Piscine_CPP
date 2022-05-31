@@ -83,11 +83,11 @@ void	Bureaucrat::signForm(A_Form & src)
 void	Bureaucrat::executeForm(A_Form & src)
 {
 	std::cout << this->m_name << " execute " << src.GetName() << " ?" << std::endl;
-	if (this->m_grade <= src.GetSign())
+	try
 	{
+		src.execute(*this);
 		std::cout << this->m_name << " execute " << src.GetName() << std::endl;
-		src.execute();
 	}
-	else
-	{ std::cout << this->m_name << " can't execute " << src.GetName() << std::endl; }	
+	catch (const std::exception& e)
+	{ std::cout << e.what() << std::endl; }	
 }

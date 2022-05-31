@@ -17,19 +17,29 @@ ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 ShrubberyCreationForm::~ShrubberyCreationForm()
 { std::cout << "ShrubberyCreationForm Destructor by default" << std::endl; }
 
-void	ShrubberyCreationForm::execute() const
+void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	std::string outFileName;
-	outFileName = this->m_target + "_shruberry";
-	std::ofstream	outfile(outFileName.c_str());
+	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
+	{	
+		std::string outFileName;
+		outFileName = this->m_target + "_shruberry";
+		std::ofstream	outfile(outFileName.c_str());
 
-	if (outfile.fail())
-	{
-		std::cout << "Error" << std::endl;
-		return ;
+		if (outfile.fail())
+		{
+			std::cout << "Error" << std::endl;
+			return ;
+		}
+		outfile << "ASCII trees" << std::endl;
+		outfile.close();
 	}
-	outfile << "ASCII trees" << std::endl;
-	outfile.close();
+	else
+	{
+		if (this->IsSigned())
+			throw GradeTooLowExecute();
+		else
+			throw FormNotSigned();
+	}
 }
 
 std::string	ShrubberyCreationForm::GetTarget() const

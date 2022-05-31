@@ -17,8 +17,18 @@ PresidentialPardonForm & PresidentialPardonForm::operator=(PresidentialPardonFor
 PresidentialPardonForm::~PresidentialPardonForm()
 { std::cout << "PresidentialPardonForm Destructor by default" << std::endl; }
 
-void	PresidentialPardonForm::execute() const
-{ std::cout << this->m_target << " has been pardoned by Zaphod Beeblebrox." << std::endl; }
+void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
+{
+	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
+		std::cout << this->m_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	else
+	{
+		if (this->IsSigned())
+			throw GradeTooLowExecute();
+		else
+			throw FormNotSigned();
+	}
+}
 
 std::string	PresidentialPardonForm::GetTarget() const
 { return (this->m_target); }

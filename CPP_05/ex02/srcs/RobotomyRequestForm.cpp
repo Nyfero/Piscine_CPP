@@ -17,16 +17,26 @@ RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const& 
 RobotomyRequestForm::~RobotomyRequestForm()
 { std::cout << "RobotomyRequestForm Destructor by default" << std::endl; }
 
-void	RobotomyRequestForm::execute() const
+void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	srand (time(NULL));
 	int	i = rand() % 1;
 
-	std::cout << "BBBZZZZzzzzz...." << std::endl;
-	if (i == 0)
-		std::cout << this->m_target << " has been robotomized" << std::endl;
+	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
+	{
+		std::cout << "BBBZZZZzzzzz...." << std::endl;
+		if (i == 0)
+			std::cout << this->m_target << " has been robotomized" << std::endl;
+		else
+			std::cout << "The robotomy failed !" << std::endl;
+	}
 	else
-		std::cout << "The robotomy failed !" << std::endl;
+	{
+		if (this->IsSigned())
+			throw GradeTooLowExecute();
+		else
+			throw FormNotSigned();
+	}
 }
 
 std::string	RobotomyRequestForm::GetTarget() const
