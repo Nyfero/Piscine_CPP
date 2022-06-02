@@ -4,6 +4,11 @@
 # define TRUE 1
 # define FALSE 0
 
+# define CHAR 1
+# define INT 2
+# define FLOAT 3
+# define DOUBLE 4
+
 # include <string>
 # include <iostream>
 # include <iomanip>

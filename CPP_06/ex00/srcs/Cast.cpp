@@ -17,6 +17,7 @@ Cast::Cast(char *av): m_type(0), m_char(0), m_charImpossible(0), m_charNonDispla
 		SetFromDouble();
 	else
 		throw ErrorNoType();
+	SetSpec();
 }
 
 Cast::~Cast()
@@ -49,7 +50,7 @@ bool	Cast::IsChar(char *av)
 {
 	if (av[1] != 0 || !std::isprint(av[0]))
 		return (FALSE);
-	this->m_type = 1;
+	this->m_type = CHAR;
 	this->m_char = av[0];
 	return (TRUE);
 }
@@ -69,7 +70,7 @@ bool	Cast::IsInt(char *av)
 	}
 	else
 		return (FALSE);
-	this->m_type = 2;
+	this->m_type = INT;
 	this->m_int = static_cast<int>(nb);
 	return (TRUE);
 }
@@ -84,7 +85,10 @@ bool	Cast::IsFloat(char *av)
 	
 	if (tmp == "nanf" || tmp == "-inff" || tmp == "+inff")
 	{
-		this->m_type = 3;
+		this-> m_precision = 1;
+		this->m_type = FLOAT;
+		this->m_charImpossible = TRUE;
+		this->m_intImpossible = TRUE;
 		this->m_float = static_cast<float>(f);
 		return (TRUE);
 	}
@@ -94,13 +98,13 @@ bool	Cast::IsFloat(char *av)
 		{
 			if (!std::isdigit(av[i]))
 			{
-				if (av[i] == '.')//Vérifie que l'on a qu'une virgule
-					compt++;
-				if (compt != 0)//Vérifie le nombre de chiffre après la virgule
-					len++;
 				if (av[i] != '.' && av[i] != 'f')//Vérifie que l'on a bien que des chiffres ou des lettres valides
 					return (FALSE);
+				if (av[i] == '.')//Vérifie que l'on a qu'une virgule
+					compt++;
 			}
+			if (compt != 0 && av[i] != '0' && std::isdigit(av[i]))//Vérifie le nombre de chiffre après la virgule
+				len++;
 			i++;
 		}
 		if (av[i - 1] != 'f' || compt > 1 || len > 6)
@@ -108,8 +112,8 @@ bool	Cast::IsFloat(char *av)
 	}
 	else
 		return (FALSE);
-	this->m_type = 3;
-	this->m_precision = len;
+	this->m_type = FLOAT;
+	this-> m_precision = len;
 	this->m_float = static_cast<float>(f);
 	return (TRUE);
 }
@@ -124,8 +128,11 @@ bool	Cast::IsDouble(char *av)
 	
 	if (tmp == "nan" || tmp == "-inf" || tmp == "+inf")
 	{
-		this->m_type = 4;
-		this->m_float = static_cast<double>(d);
+		this-> m_precision = 1;
+		this->m_type = DOUBLE;
+		this->m_charImpossible = TRUE;
+		this->m_intImpossible = TRUE;
+		this->m_double = static_cast<double>(d);
 		return (TRUE);
 	}
 	if (std::isdigit(av[0]) || av[0] == '+' || av[0] == '-' || av[0] == '.')
@@ -134,13 +141,12 @@ bool	Cast::IsDouble(char *av)
 		{
 			if (!std::isdigit(av[i]))
 			{
-				if (av[i] == '.')//Vérifie que l'on a qu'une virgule
-					compt++;
-				if (compt != 0)//Vérifie le nombre de chiffre après la virgule
-					len++;
 				if (av[i] != '.')//Vérifie que l'on a que des virgules en caractères non numérique
 					return (FALSE);
+				compt++;
 			}
+			if (compt != 0 && av[i] != '0' && std::isdigit(av[i]))//Vérifie le nombre de chiffre après la virgule
+				len++;
 			i++;
 		}
 		if (compt > 1 || len > 15)
@@ -148,8 +154,8 @@ bool	Cast::IsDouble(char *av)
 	}
 	else
 		return (FALSE);
-	this->m_type = 4;
-	this->m_precision = len;
+	this->m_type = DOUBLE;
+	this-> m_precision = len;
 	this->m_double = static_cast<double>(d);
 	return (TRUE);
 }
@@ -215,10 +221,10 @@ void	Cast::SetSpec()
 void	Cast::Display() const
 {
 	std::cout << "Char: ";
-	if (this->m_charNonDisplay == TRUE)
-		std::cout << "Non displayable" << std::endl;
-	else if (this->m_charImpossible)
+	if (this->m_charImpossible)
 		std::cout << "impossible" << std::endl;
+	else if (this->m_charNonDisplay)
+		std::cout << "Non displayable" << std::endl;
 	else
 		std::cout << this->m_char << std::endl;
 		
@@ -229,12 +235,12 @@ void	Cast::Display() const
 		std::cout << this->m_int << std::endl;
 	
 	std::cout << "Float: " << this->m_float;
-	if (this->m_type == 2)
+	if (this->m_type == INT || this->m_precision == 0)
 		std::cout << ".0";
 	std::cout << "f" << std::endl;
 	
 	std::cout << "Double: " << this->m_double;
-	if (this->m_type == 2)
+	if (this->m_type == INT || this->m_precision == 0)
 		std::cout << ".0";
 	std::cout << std::endl;
 }
