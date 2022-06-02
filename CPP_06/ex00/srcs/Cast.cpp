@@ -4,7 +4,8 @@
 //	Canonical Form	//
 //					//
 
-Cast::Cast(char *av): m_char(0), m_int(0), m_float(0), m_double(0)
+Cast::Cast(char *av): m_char(0), m_charImpossible(0), m_charNonDisplay(0),
+	m_int(0), m_intImpossible(0), m_float(0), m_double(0)
 {
 	if (IsChar(av))
 		SetFromChar(av);
@@ -44,20 +45,36 @@ const char* Cast::ErrorNoType::what() const throw()
 //	Functions	//
 //				//
 
-bool	Cast::IsChar(char *av) const
-{	
-	if (av[1] != 0 && std::isprint(av[0]))
+bool	Cast::IsChar(char *av)
+{
+	double	d = strtod(av, NULL);
+	
+	if (d < CHAR_MIN || d > CHAR_MAX)
+	{
+		this->m_charImpossible = TRUE;
 		return (FALSE);
+	}
+	if (!std::isprint(av[0]))
+	{
+		this->m_charNonDisplay = TRUE;
+		return (FALSE);
+	}
+	if (av[1] != 0)
+		return (FALSE);
+	this->m_char = static_cast<char>(d);
 	return (TRUE);
 }
 
-bool	Cast::IsInt(char *av) const
+bool	Cast::IsInt(char *av)
 {
 	double	d = strtod(av, NULL);
 	int		i = 0;
 	
-	if (d < INT_MIN || d > INT_MAX)
+	if (d < INT_MIN || d > INT_MAX)//Vérifie max et min int
+	{
+		this->m_intImpossible = TRUE;
 		return (FALSE);
+	}
 	if (std::isdigit(av[0]) || av[0] == '+' || av[0] == '-')
 	{
 		while (av[++i])
@@ -66,24 +83,50 @@ bool	Cast::IsInt(char *av) const
 	}
 	else
 		return (FALSE);
+	this->m_int = static_cast<int>(d);
 	return (TRUE);
 }
 
-bool	Cast::IsFloat(char *av) const
+bool	Cast::IsFloat(char *av)
 {
-	double	d = strtod(av, NULL);
-	int		i = 0;
+	int			i = 0;
+	int			compt = 0;
+	int			len = 0;
+	std::string	tmp = av;
+	double		d = strtod(av, NULL);
 	
+	if (tmp == "nanf" || tmp == "-inff" || tmp == "+inff")
+	{
+		this->m_charImpossible = TRUE;
+		this->m_intImpossible = TRUE;
+		this->m_float = static_cast<float>(d);
+		return (TRUE);
+	}
 	if (std::isdigit(av[0]) || av[0] == '+' || av[0] == '-' || av[0] == '.')
 	{
-		w
+		while (av[i])
+		{
+			if (!std::isdigit(av[i]))
+			{
+				if (av[i] == '.')//Vérifie que l'on a qu'une virgule
+					compt++;
+				if (compt != 0)//Vérifie le nombre de chiffre après la virgule
+					len++;
+				if (av[i] != '.' && av[i] != 'f')//Vérifie que l'on a bien que des chiffres ou des lettres valides
+					return (FALSE);
+			}
+			i++;
+		}
+		if (av[i - 1] != 'f' || compt > 1 || len > 6)
+			return (FALSE);
 	}
 	else
 		return (FALSE);
+	this->m_float = static_cast<float>(d);
 	return (TRUE);
 }
 
-bool	Cast::IsDouble(char *av) const
+bool	Cast::IsDouble(char *av)
 {
 	(void)av;
 	return (FALSE);
@@ -144,31 +187,25 @@ void	Cast::SetFromDouble(char *av)
 }
 
 //			//
-//	Getter	//
-//			//
-
-char	Cast::GetChar() const
-{
-	if (this->m_char < CHAR_MIN || this->m_char > CHAR_MAX)
-	{
-		std::cout << "impossible";
-		return (0);
-	}
-	return (this->m_char);
-}
-
-int		Cast::GetInt() const
-{ return (this->m_int); }
-
-float	Cast::GetFloat() const
-{ return (this->m_float); }
-
-double	Cast::GetDouble() const
-{ return (this->m_double); }
-
-//			//
 //	Display	//
 //			//
 
-std::ostream & operator << (std::ostream &out, const Cast &c)
-{ return (out << "Char: " << c.GetChar() << "\nInt: " << c.GetInt() << "\nFloat: " << c.GetFloat() << "f\nDouble: " << c.GetDouble() << std::endl); }
+void	Cast::Display() const
+{
+	std::cout << "Char: ";
+	if (this->m_charImpossible)
+		std::cout << "impossible" << std::endl;
+	else if (this->m_charNonDisplay)
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << this->m_char << std::endl;
+		
+	std::cout << "Int: ";
+	if (this->m_intImpossible)
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << this->m_int << std::endl;
+	
+	std::cout << "Float: " << this->m_float << "f" << std::endl;
+	std::cout << "Double: " << this->m_double << std::endl;
+}

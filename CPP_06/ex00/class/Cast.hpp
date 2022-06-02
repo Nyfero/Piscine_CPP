@@ -14,7 +14,10 @@ class Cast
 {
 	private:
 		char		m_char;
+		bool		m_charImpossible;
+		bool		m_charNonDisplay;
 		int			m_int;
+		bool		m_intImpossible;
 		float		m_float;
 		double		m_double;
 
@@ -33,10 +36,10 @@ class Cast
 		};
 		
 		//Functions
-		bool	IsChar(char *av) const;
-		bool	IsInt(char *av) const;
-		bool	IsFloat(char *av) const;
-		bool	IsDouble(char *av) const;
+		bool	IsChar(char *av);
+		bool	IsInt(char *av);
+		bool	IsFloat(char *av);
+		bool	IsDouble(char *av);
 		
 		//Setter
 		void	SetFromChar(char *av);
@@ -44,14 +47,9 @@ class Cast
 		void	SetFromFloat(char *av);
 		void	SetFromDouble(char *av);
 		
-		//Getter
-		char	GetChar() const;
-		int		GetInt() const;
-		float	GetFloat() const;
-		double	GetDouble() const;
+		//Display
+		void	Display() const;
 };
 
-//Display
-std::ostream & operator << (std::ostream &out, const Cast &c);
 
 #endif

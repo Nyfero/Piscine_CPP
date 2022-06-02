@@ -7,7 +7,7 @@ int	main(int ac, char **av)
 		try
 		{
 			Cast	convert(av[1]);
-			std::cout << convert << std::endl;
+			convert.Display();
 		}
 		catch (const std::exception& e)
 		{ std::cerr << e.what() << std::endl; }
