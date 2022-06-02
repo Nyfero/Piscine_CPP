@@ -30,7 +30,7 @@ FILES = main.cpp Cast.cpp
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = convert
+NAME = Convert
 
 CXX = c++
 
