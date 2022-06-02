@@ -6,13 +6,17 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip>
 # include <climits>
+# include <limits>
+# include <cmath>
 # include <cctype>
 # include <stdlib.h>
 
 class Cast
 {
 	private:
+		int			m_type;
 		char		m_char;
 		bool		m_charImpossible;
 		bool		m_charNonDisplay;
@@ -20,6 +24,7 @@ class Cast
 		bool		m_intImpossible;
 		float		m_float;
 		double		m_double;
+		int			m_precision;
 
 	public:
 		//Orthodox Canonical Form
@@ -42,10 +47,11 @@ class Cast
 		bool	IsDouble(char *av);
 		
 		//Setter
-		void	SetFromChar(char *av);
-		void	SetFromInt(char *av);
-		void	SetFromFloat(char *av);
-		void	SetFromDouble(char *av);
+		void	SetFromChar();
+		void	SetFromInt();
+		void	SetFromFloat();
+		void	SetFromDouble();
+		void	SetSpec();
 		
 		//Display
 		void	Display() const;
