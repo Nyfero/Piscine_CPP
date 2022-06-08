@@ -17,6 +17,7 @@ int main( void )
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay all\e[39m" << std::endl;
 				iter(itab, 5, displayTab);
+				
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay 2\e[39m" << std::endl;
 				iter(itab, 2, displayTab);
@@ -28,6 +29,7 @@ int main( void )
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay all\e[39m" << std::endl;
 				iter(ftab, 5, displayTab);
+				
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay 2\e[39m" << std::endl;
 				iter(ftab, 2, displayTab);
@@ -39,6 +41,7 @@ int main( void )
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay all\e[39m" << std::endl;
 				iter(str, 5, displayTab);
+				
 				std::cout << std::endl;
 				std::cout << "\e[92mDisplay 2\e[39m" << std::endl;
 				iter(str, 2, displayTab);
