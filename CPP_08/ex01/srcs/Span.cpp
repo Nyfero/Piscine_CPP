@@ -82,3 +82,16 @@ void	Span::addRange(int size)
 		this->m_compt++;
 	}
 }
+
+void	Span::addList(std::vector<int>	tab)
+{
+	int size = tab.size();
+	if (size + this->m_compt > this->m_size)
+		throw ToManyElement();
+	
+	for(int i = 0; i < size; i++)
+	{
+		this->m_array[this->m_compt] = tab[i];
+		this->m_compt++;
+	}
+}

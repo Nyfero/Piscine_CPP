@@ -125,6 +125,14 @@ int main( void )
 					Span	sp = Span(6);
 					std::vector<int>	tab;
 					
+					tab.push_back(-42);
+					tab.push_back(0);
+					tab.push_back(754);
+					tab.push_back(16576);
+					tab.push_back(47852);
+					tab.push_back(100000);
+	
+					sp.addList(tab);
 					std::cout << "shortestSpan" << std::endl;
 					std::cout << sp.shortestSpan() << std::endl;
 					std::cout << "longestSpan" <<  std::endl;
