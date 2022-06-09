@@ -36,7 +36,7 @@ Span & Span::operator=(Span const& src) {
 void	Span::addNumber(int nb) {
 	if (this->m_compt >= this->m_size)
 		throw ToManyElement();
-	this->m_array[this->m_compt];
+	this->m_array[this->m_compt] = nb;
 	this->m_compt++;
 	std::cout << "Number " << nb << " added to the span" << std::endl;
 }
@@ -47,7 +47,6 @@ int		Span::shortestSpan() const {
 
 	Span	tmp(*this);
 	std::sort(tmp.m_array.begin(), tmp.m_array.end());
-	
 	
 	int		ret = tmp.m_array[1] - tmp.m_array[0];
 	for (unsigned int i = 0; i < tmp.m_compt; i++)
@@ -73,15 +72,13 @@ int		Span::longestSpan() const {
 	return (ret - tmp.m_array[0]);
 }
 
-// void	Span::addRandom(int size)
-// {
-// 	srand (time(NULL));
-// 	for (int i = 0; i < size; i++)
-// 	{
-// 		this->m_array.push_back(rand() % 100000 + 1);
-// 		if (this->m_compt >= this->m_size)
-// 			throw ToManyElement();
-// 		std::cout << "Number " << this->m_array[i] << " added to the span" << std::endl;
-// 		this->m_compt++;
-// 	}
-// }
+void	Span::addRange(int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		if (this->m_compt >= this->m_size)
+			throw ToManyElement();
+		this->m_array[i] = i;
+		this->m_compt++;
+	}
+}

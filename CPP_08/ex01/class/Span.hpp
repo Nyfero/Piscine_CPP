@@ -6,7 +6,8 @@
 # include <iomanip>
 # include <algorithm>
 # include <vector>
-# include <cmath>
+# include <iterator>
+# include <stdexcept>
 
 class Span
 {
@@ -45,7 +46,8 @@ class Span
 		void	addNumber(int nb);
 		int		shortestSpan() const;
 		int		longestSpan() const;
-		// void	addRandom(int size);
+		void	addRange(int size);
+		void	addList(std::vector<int> tab);
 };
 
 #endif
