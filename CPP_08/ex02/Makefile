@@ -20,17 +20,17 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, Span.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, MutantStack.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp Span.cpp
+FILES = main.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Span
+NAME = Mutant
 
 CXX = c++
 
