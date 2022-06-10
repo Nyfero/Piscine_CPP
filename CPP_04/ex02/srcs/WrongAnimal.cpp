@@ -1,17 +1,20 @@
 # include "../class/WrongAnimal.hpp"
 
 //					//
-//	Canonical Form	//
+//	Constructors	//
 //					//
 
-WrongAnimal::WrongAnimal(): m_type("WrongAnimal")
-{ std::cout << "WrongAnimal Constructor by default call" << std::endl; }
+WrongAnimal::WrongAnimal(): m_type("WrongAnimal") {
+	std::cout << "WrongAnimal Constructor by default call" << std::endl;
+}
 
-WrongAnimal::~WrongAnimal()
-{ std::cout << "WrongAnimal Destructor call" << std::endl; }
+WrongAnimal::~WrongAnimal() {
+	std::cout << "WrongAnimal Destructor call" << std::endl;
+}
 
-WrongAnimal::WrongAnimal(WrongAnimal const& src): m_type(src.m_type)
-{ std::cout << "WrongAnimal Constructor by copy call" << std::endl; }
+WrongAnimal::WrongAnimal(WrongAnimal const& src): m_type(src.m_type) {
+	std::cout << "WrongAnimal Constructor by copy call" << std::endl;
+}
 
 WrongAnimal & WrongAnimal::operator=(WrongAnimal const& src)
 {

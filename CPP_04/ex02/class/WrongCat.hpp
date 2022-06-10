@@ -8,13 +8,11 @@
 class	WrongCat: public WrongAnimal
 {
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		WrongCat();
 		virtual ~WrongCat();
 		WrongCat(WrongCat const& src);
 		WrongCat & operator=(WrongCat const& src);
-		
-		//Constructor
 		WrongCat(std::string a_type);
 		
 		//Functions

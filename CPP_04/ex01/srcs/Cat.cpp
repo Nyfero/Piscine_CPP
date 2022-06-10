@@ -1,43 +1,35 @@
 #include "../class/Cat.hpp"
 
 //					//
-//	Canonical Form	//
+//	Constructors	//
 //					//
 
-Cat::Cat(): Animal()
-{
+Cat::Cat(): Animal() {
 	std::cout << "Cat Constructor by default call" << std::endl;
-	m_type = "Cat";
+	this->m_type = "Cat";
 	this->m_brain = new Brain();
 }
 
-Cat::~Cat()
-{
+Cat::~Cat() {
 	std::cout << "Cat Destructor call" << std::endl;
 	delete this->m_brain;
 }
 
-Cat::Cat(Cat const& src): Animal(src)
-{
+Cat::Cat(Cat const& src): Animal(src) {
 	std::cout << "Cat Constructor by copy call" << std::endl;
 	this->m_brain = new Brain(*src.m_brain);
 }
 
-Cat & Cat::operator=(Cat const& src)
-{
+Cat & Cat::operator=(Cat const& src) {
 	std::cout << "Cat Constructor by assignement call" << std::endl;
 	this->m_type = src.m_type;
-	delete this->m_brain;
+	if (this->m_brain)
+		delete this->m_brain;
 	this->m_brain = new Brain(*src.m_brain);
 	return (*this);
 }
 
-//				//
-//	Constructor	//
-//				//
-
-Cat::Cat(std::string a_type): Animal(a_type)
-{
+Cat::Cat(std::string a_type): Animal(a_type) {
 	std::cout << "Cat Constructor surcharged call" << std::endl;
 	this->m_brain = new Brain();
 }
@@ -46,11 +38,14 @@ Cat::Cat(std::string a_type): Animal(a_type)
 //	Functions	//
 //				//
 
-void	Cat::makeSound() const
-{ std::cout << "Miaou" << std::endl; }
+void	Cat::makeSound() const {
+	std::cout << "Miaou" << std::endl;
+}
 
-void	Cat::setIdeas()
-{ this->m_brain->set3Ideas("Destroy", "all", "Human"); }
+void	Cat::setIdeas() {
+	this->m_brain->set3Ideas("Destroy", "all", "Human");
+}
 
-void	Cat::printIdeas() const
-{ this->m_brain->printIdeas(); }
+void	Cat::printIdeas() const {
+	this->m_brain->printIdeas();
+}
