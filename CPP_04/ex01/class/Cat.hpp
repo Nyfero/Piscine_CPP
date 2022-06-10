@@ -12,20 +12,17 @@ class	Cat: public Animal
 		Brain	*m_brain;
 
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Cat();
 		virtual ~Cat();
 		Cat(Cat const& src);
 		Cat & operator=(Cat const& src);
-		
-		//Constructor
 		Cat(std::string a_type);
 
 		//Functions
 		virtual void	makeSound() const;
 		void			setIdeas();
 		void			printIdeas() const;
-
 };
 
 #endif

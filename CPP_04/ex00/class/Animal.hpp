@@ -20,7 +20,6 @@ class	Animal
 		//Functions
 		virtual void	makeSound() const;
 		std::string		getType() const;
-
 };
 
 #endif

@@ -8,17 +8,15 @@ class	Animal
 {
 	protected:
 		std::string	m_type;
-	
+
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Animal();
 		virtual ~Animal();
 		Animal(Animal const& src);
 		Animal & operator=(Animal const& src);
-		
-		//Constructor
 		Animal(std::string a_type);
-	
+		
 		//Functions
 		virtual void	makeSound() const;
 		std::string		getType() const;

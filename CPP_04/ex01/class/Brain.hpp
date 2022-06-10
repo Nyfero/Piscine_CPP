@@ -10,7 +10,7 @@ class	Brain
 		std::string	m_ideas[100];
 
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Brain();
 		virtual ~Brain();
 		Brain(Brain const& src);
@@ -19,7 +19,6 @@ class	Brain
 		//Functions
 		void	set3Ideas(std::string a_1, std::string a_2, std::string a_3);
 		void	printIdeas();
-		
 };
 
 #endif

@@ -1,38 +1,39 @@
 # include "../class/WrongAnimal.hpp"
 
 //					//
-//	Canonical Form	//
+//	Constructors	//
 //					//
 
-WrongAnimal::WrongAnimal(): m_type("WrongAnimal")
-{ std::cout << "WrongAnimal Constructor by default call" << std::endl; }
+WrongAnimal::WrongAnimal(): m_type("WrongAnimal") {
+	std::cout << "WrongAnimal Constructor by default call" << std::endl;
+}
 
-WrongAnimal::~WrongAnimal()
-{ std::cout << "WrongAnimal Destructor call" << std::endl; }
+WrongAnimal::~WrongAnimal() {
+	std::cout << "WrongAnimal Destructor call" << std::endl;
+}
 
-WrongAnimal::WrongAnimal(WrongAnimal const& src): m_type(src.m_type)
-{ std::cout << "WrongAnimal Constructor by copy call" << std::endl; }
+WrongAnimal::WrongAnimal(WrongAnimal const& src): m_type(src.m_type) {
+	std::cout << "WrongAnimal Constructor by copy call" << std::endl;
+}
 
-WrongAnimal & WrongAnimal::operator=(WrongAnimal const& src)
-{
+WrongAnimal & WrongAnimal::operator=(WrongAnimal const& src) {
 	std::cout << "WrongAnimal Constructor by assignement call" << std::endl;
 	this->m_type = src.m_type;
 	return (*this);
 }
 
-//				//
-//	Constructor	//
-//				//
-
-WrongAnimal::WrongAnimal(std::string a_type): m_type(a_type)
-{ std::cout << "WrongAnimal Constructor surcharged call" << std::endl; }
+WrongAnimal::WrongAnimal(std::string a_type): m_type(a_type) {
+	std::cout << "WrongAnimal Constructor surcharged call" << std::endl;
+}
 
 //				//
 //	Functions	//
 //				//
 
-void	WrongAnimal::makeSound() const
-{ std::cout << "Au revoir" << std::endl; }
+void	WrongAnimal::makeSound() const {
+	std::cout << "Au revoir" << std::endl;
+}
 
-std::string	WrongAnimal::getType() const
-{ return (this->m_type); }
+std::string	WrongAnimal::getType() const {
+	return (this->m_type);
+}

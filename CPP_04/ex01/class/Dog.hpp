@@ -12,18 +12,15 @@ class	Dog: public Animal
 		Brain	*m_brain;
 
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Dog();
 		virtual ~Dog();
 		Dog(Dog const& src);
 		Dog & operator=(Dog const& src);
-		
-		//Constructor
 		Dog(std::string a_type);
 
 		//Functions
 		virtual void 	makeSound() const;
-
 };
 
 #endif
