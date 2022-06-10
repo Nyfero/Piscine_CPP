@@ -8,14 +8,13 @@
 class FragTrap : public ClapTrap
 {
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		FragTrap();
 		~FragTrap();
 		FragTrap(FragTrap const& src);
 		FragTrap & operator=(FragTrap const& src);
-		
-		//Constructor
 		FragTrap(std::string a_name);
+		
 		//Functions
 		void	highFivesGuys(void);
 };

@@ -24,10 +24,10 @@ int main()
 	std::cout << std::endl;
 	std::cout << "\t\e[92m---DIAMONDTRAP---\e[39m" << std::endl << std::endl;
 	{
-		DiamondTrap	a("DiamondTrap");
-		ScavTrap	b("ScavTrap");
-		FragTrap	c("FragTrap");
-		ClapTrap	d("ClapTrap");
+		DiamondTrap	a("Diamond");
+		ScavTrap	b("Scav");
+		FragTrap	c("Frag");
+		ClapTrap	d("Clap");
 		
 		std::cout << std::endl;
 		a.attack("Something");

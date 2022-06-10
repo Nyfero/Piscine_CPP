@@ -8,14 +8,13 @@
 class ScavTrap : virtual public ClapTrap
 {
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		ScavTrap();
 		~ScavTrap();
 		ScavTrap(ScavTrap const& src);
 		ScavTrap & operator=(ScavTrap const& src);
-		
-		//Constructor
 		ScavTrap(std::string a_name);
+		
 		//Functions
 		void	attack(const std::string& target);
 		void	guardGate();

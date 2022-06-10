@@ -1,101 +1,98 @@
 #include "../class/ClapTrap.hpp"
 
 //					//
-//	Canonical Form	//
+//	Constructors	//
 //					//
 
-ClapTrap::ClapTrap(): m_name("ClapTrap"), m_life(10), m_mana(10), m_dmg(0)
-{ std::cout << "Constructor by default call" << std::endl; }
+ClapTrap::ClapTrap(): m_name("ClapTrap"), m_life(10), m_mana(10), m_dmg(0) {
+	std::cout << "Constructor by default call" << std::endl;
+}
 
-ClapTrap::~ClapTrap()
-{ std::cout << "Destructor call on: " << m_name << std::endl; }
+ClapTrap::~ClapTrap() {
+	std::cout << "Destructor call on: " << this->m_name << std::endl;
+}
 
-ClapTrap::ClapTrap(ClapTrap const& src): m_name(src.m_name),  m_life(src.m_life), m_mana(src.m_mana), m_dmg(src.m_dmg)
-{ std::cout << "Constructor by copy call" << std::endl; }
+ClapTrap::ClapTrap(ClapTrap const& src): m_name(src.m_name), m_life(src.m_life)
+	, m_mana(src.m_mana), m_dmg(src.m_dmg) {
+	std::cout << "Constructor by copy call" << std::endl;
+}
 
-ClapTrap & ClapTrap::operator=(ClapTrap const& src)
-{
-	std::cout << "Constructor by copy assignement call" << std::endl;
-	m_name = src.m_name;
-	m_life = src.m_life;
-	m_mana = src.m_mana;
-	m_dmg = src.m_dmg;
+ClapTrap & ClapTrap::operator=(ClapTrap const& src) {
+	std::cout << "Constructor by assignement call" << std::endl;
+	this->m_name = src.m_name;
+	this->m_life = src.m_life;
+	this->m_mana = src.m_mana;
+	this->m_dmg = src.m_dmg;
 	return (*this);
 }
 
-//				//
-//	Constructor	//
-//				//
-
-ClapTrap::ClapTrap(std::string a_name): m_name(a_name), m_life(10), m_mana(10), m_dmg(0)
-{ std::cout << "Constructor surcharged call" << std::endl; }
+ClapTrap::ClapTrap(std::string a_name): m_name(a_name), m_life(10), m_mana(10)
+	, m_dmg(0) {
+	std::cout << "Constructor surcharged call" << std::endl;
+}
 
 //				//
 //	Functions	//
 //				//
 
-void	ClapTrap::attack(const std::string& target)
-{
-	std:: cout << m_name << ": try to attack" << std::endl;
+void	ClapTrap::attack(const std::string& target) {
+	std:: cout << this->m_name << ": try to attack" << std::endl;
 	if (m_life == 0)
 	{
-		std:: cout << m_name << ": "; 
+		std:: cout << this->m_name << ": "; 
 		DisplayDeath();
 		return;
 	}
-	if (m_mana == 0)
+	if (this->m_mana == 0)
 	{
-		std:: cout << m_name << ": "; 
+		std:: cout << this->m_name << ": "; 
 		DisplayNoEnergy();
 		return ;
 	}
-	std:: cout << m_name << ": "; 
+	std:: cout << this->m_name << ": "; 
 	DisplayAttack();
-	std:: cout << target << ": take " << m_dmg << " dmg" << std::endl; 
-	m_mana--;
+	std:: cout << target << ": take " << this->m_dmg << " dmg" << std::endl; 
+	this->m_mana--;
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
-{
-	std:: cout << m_name << ": take " << amount << " dmg" << std::endl; 
-	std:: cout << m_name << ": "; 
-	m_life -= amount;
-	if (m_life <= 0)
+void	ClapTrap::takeDamage(unsigned int amount) {
+	std:: cout << this->m_name << ": take " << amount << " dmg" << std::endl; 
+	std:: cout << this->m_name << ": "; 
+	this->m_life -= amount;
+	if (this->m_life <= 0)
 	{
 		DisplayDeath();
-		m_life = 0;
+		this->m_life = 0;
 	}
 	else
 		DisplayTakeDmg();
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
-{
-	std:: cout << m_name << ": try to repair" << std::endl;
-	if (m_life == 0)
+void	ClapTrap::beRepaired(unsigned int amount) {
+	std:: cout << this->m_name << ": try to repair" << std::endl;
+	if (this->m_life == 0)
 	{
-		std:: cout << m_name << ": "; 
+		std:: cout << this->m_name << ": "; 
 		DisplayDeath();
 		return ;
 	}
-	if (m_mana == 0)
+	if (this->m_mana == 0)
 	{
-		std:: cout << m_name << ": ";
+		std:: cout << this->m_name << ": ";
 		DisplayNoEnergy();
 		return ;
 	}
-	std:: cout << m_name << ": ";
+	std:: cout << this->m_name << ": ";
 	DisplayRepaired();
-	m_mana--;
-	m_life += amount;
+	this->m_mana--;
+	this->m_life += amount;
 }
 
 //			//
 //	Display	//
 //			//
 
-void	DisplayNoEnergy(void)
-{
+void	DisplayNoEnergy(void) {
 	srand (time(NULL));
 	int	i = rand() % 10;
 	
@@ -136,8 +133,7 @@ void	DisplayNoEnergy(void)
 	return ;
 }
 
-void	DisplayRepaired(void)
-{
+void	DisplayRepaired(void) {
 	srand (time(NULL));
 	int	i = rand() % 11;
 	
@@ -181,8 +177,7 @@ void	DisplayRepaired(void)
 	return ;
 }
 
-void	DisplayTakeDmg(void)
-{
+void	DisplayTakeDmg(void) {
 	srand (time(NULL));
 	int	i = rand() % 7;
 	
@@ -214,8 +209,7 @@ void	DisplayTakeDmg(void)
 	return ;
 }
 
-void	DisplayAttack(void)
-{
+void	DisplayAttack(void) {
 	srand (time(NULL));
 	int	i = rand() % 13;
 	
@@ -268,8 +262,7 @@ void	DisplayAttack(void)
 	return ;
 }
 
-void	DisplayDeath(void)
-{
+void	DisplayDeath(void) {
 	srand (time(NULL));
 	int	i = rand() % 21;
 	

@@ -8,21 +8,20 @@
 
 class DiamondTrap : public FragTrap, public ScavTrap
 {
+	private:
+		std::string 	m_name;
+
 	public:
-		//Orthodox Canonical Form
+		//Constructor
 		DiamondTrap();
 		~DiamondTrap();
 		DiamondTrap(DiamondTrap const& src);
 		DiamondTrap & operator=(DiamondTrap const& src);
-		
-		//Constructor
 		DiamondTrap(std::string a_name);
 		
 		//Functions
 		void	whoAmI();
 		
-	private:
-		std::string 	m_name;
 };
 
 #endif
