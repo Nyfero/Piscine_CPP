@@ -8,13 +8,11 @@
 class	Dog: public Animal
 {
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Dog();
 		virtual ~Dog();
 		Dog(Dog const& src);
 		Dog & operator=(Dog const& src);
-		
-		//Constructor
 		Dog(std::string a_type);
 		
 		//Functions

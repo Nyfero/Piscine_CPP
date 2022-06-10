@@ -8,13 +8,11 @@
 class	Cat: public Animal
 {
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Cat();
 		virtual ~Cat();
 		Cat(Cat const& src);
 		Cat & operator=(Cat const& src);
-		
-		//Constructor
 		Cat(std::string a_type);
 		
 		//Functions
