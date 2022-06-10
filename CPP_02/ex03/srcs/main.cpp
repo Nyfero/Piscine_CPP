@@ -12,7 +12,7 @@ int main()
 	Point f(7.5f, 3.1f); // should be false
 	Point g(0.0f, 0.0f); // on A, should be false
 	
-	if (bsp(a, b, c, d) == true)
+	if (bsp(a, b, c, d) == 1)
 		std::cout << "true" << std::endl;
 	else
 		std::cout << "false" << std::endl;

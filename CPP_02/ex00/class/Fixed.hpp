@@ -6,17 +6,20 @@
 
 class Fixed
 {
+	private:
+		int					m_value;
+		static const int	m_bits = 8;
+
 	public:
+		//Orthodox Canonical Form
 		Fixed();
 		~Fixed();
 		Fixed(Fixed const& src);
-		void	operator=(Fixed const& src);
+		Fixed & operator=(Fixed const& src);
+		
+		//Functions
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
-	
-	private:
-		int	m_value;
-		static const int	m_bits = 8;
 };
 
 #endif
