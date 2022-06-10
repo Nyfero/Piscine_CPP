@@ -80,7 +80,6 @@ int main()
 		std::cout << "a * b ->" << (a * b) << std::endl;
 		std::cout << "a / b ->" << (a / b) << std::endl;
 
-		
 		std::cout << std::endl;
 		std::cout << "\t\e[93m---INT-FLOAT---\e[39m" << std::endl << std::endl;
 		std::cout << "a + c ->" << (a + c) << std::endl;
