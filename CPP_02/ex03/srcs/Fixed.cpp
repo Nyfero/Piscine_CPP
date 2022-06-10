@@ -1,95 +1,109 @@
 #include "../class/Fixed.hpp"
 
-/*************/
-/*Constructor*/
-/*************/
+//					//
+//	Canonical Form	//
+//					//
 
-Fixed::Fixed()
-{ return ; }
+Fixed::Fixed(): m_value(0) {}
 
-Fixed::~Fixed()
-{ return ; }
+Fixed::~Fixed() {}
 
-Fixed::Fixed(Fixed const& src): m_value(src.m_value)
-{ return ; }
+Fixed::Fixed(Fixed const& src): m_value(src.m_value) {}
 
-Fixed & Fixed::operator=(Fixed const& src)
-{
+Fixed & Fixed::operator=(Fixed const& src) {
 	this->m_value = src.m_value;
 	return (*this);
 }
 
-Fixed::Fixed(const int nb)
-{ this->m_value = (nb << Fixed::m_bits); }
+//					//
+//	Constructors	//
+//					//
 
-Fixed::Fixed(const float nb)
-{ this->m_value = roundf(nb * (1 << Fixed::m_bits)); }
+Fixed::Fixed(const int nb) {
+	this->m_value = (nb << Fixed::m_bits);
+}
 
-/***********/
-/*Functions*/
-/***********/
+Fixed::Fixed(const float nb) {
+	this->m_value = roundf(nb * (1 << Fixed::m_bits));
+}
 
-int		Fixed::getRawBits() const
-{ return (m_value); }
+//				//
+//	Functions	//
+//				//
 
-void	Fixed::setRawBits(int const raw)
-{ m_value = raw; }
+int		Fixed::getRawBits() const {
+	return (this->m_value);
+}
 
-float Fixed::toFloat(void) const
-{ return ((float)m_value / (float)(1 << Fixed::m_bits)); }
+void	Fixed::setRawBits(int const raw) {
+	this->m_value = raw;
+}
 
-int Fixed::toInt(void) const
-{ return (m_value >> Fixed::m_bits); }
+float	Fixed::toFloat(void) const {
+	return ((float)m_value / (float)(1 << Fixed::m_bits));
+}
 
-Fixed & Fixed::min(Fixed & a, Fixed & b)
-{ return (a < b ? a : b); }
+int		Fixed::toInt(void) const {
+	return (m_value >> Fixed::m_bits);
+}
 
-Fixed const& Fixed::min(Fixed const& a, Fixed const& b)
-{ return (a < b ? a : b); }
+//				//
+//	Min		Max	//
+//				//
 
-Fixed & Fixed::max(Fixed & a, Fixed & b)
-{ return (a > b ? a : b); }
+Fixed & Fixed::min(Fixed & a, Fixed & b) {
+	return (a < b ? a : b);
+}
 
-Fixed const& Fixed::max(Fixed const& a, Fixed const& b)
-{ return (a > b ? a : b); }
+Fixed const& Fixed::min(Fixed const& a, Fixed const& b) {
+	return (a < b ? a : b);
+}
+
+Fixed & Fixed::max(Fixed & a, Fixed & b) {
+	return (a > b ? a : b);
+}
+
+Fixed const& Fixed::max(Fixed const& a, Fixed const& b) {
+	return (a > b ? a : b);
+}
 
 
-/************/
-/*Comparison*/
-/************/
+//				//
+//	Operators	//
+//				//
 
-bool	Fixed::operator>(Fixed const& a) const
-{ return (this->m_value > a.m_value); }
+bool	Fixed::operator>(Fixed const& a) const {
+	return (this->m_value > a.m_value);
+}
 
-bool	Fixed::operator<(Fixed const& a) const
-{ return (this->m_value < a.m_value); }
+bool	Fixed::operator<(Fixed const& a) const {
+	return (this->m_value < a.m_value);
+}
 
-bool	Fixed::operator>=(Fixed const& a) const
-{ return (this->m_value >= a.m_value); }
+bool	Fixed::operator>=(Fixed const& a) const {
+	return (this->m_value >= a.m_value);
+}
 
-bool	Fixed::operator<=(Fixed const& a) const
-{ return (this->m_value <= a.m_value); }
+bool	Fixed::operator<=(Fixed const& a) const {
+	return (this->m_value <= a.m_value);
+}
 
-bool	Fixed::operator==(Fixed const& a) const
-{ return (this->m_value == a.m_value); }
+bool	Fixed::operator==(Fixed const& a) const {
+	return (this->m_value == a.m_value);
+}
 
-bool	Fixed::operator!=(Fixed const& a) const
-{ return (this->m_value != a.m_value); }
+bool	Fixed::operator!=(Fixed const& a) const {
+	return (this->m_value != a.m_value);
+}
 
-/**********/
-/*Operator*/
-/**********/
-
-Fixed	Fixed::operator+(Fixed const& a)
-{
+Fixed	Fixed::operator+(Fixed const& a) {
 	Fixed	res;
 
 	res.m_value = this->m_value + a.m_value;
 	return (res);
 }
 
-Fixed	Fixed::operator-(Fixed const& a)
-{
+Fixed	Fixed::operator-(Fixed const& a) {
 	Fixed	res;
 	
 	res.m_value = this->m_value - a.m_value;
@@ -97,8 +111,7 @@ Fixed	Fixed::operator-(Fixed const& a)
 }
 
 //On cast en long pour pouvoir dépasser max int
-Fixed	Fixed::operator*(Fixed const& a)
-{
+Fixed	Fixed::operator*(Fixed const& a) {
 	Fixed		res;
 	long int	x;
 	long int	y;
@@ -109,8 +122,7 @@ Fixed	Fixed::operator*(Fixed const& a)
 	return res;
 }
 
-Fixed	Fixed::operator/(Fixed const& a)
-{
+Fixed	Fixed::operator/(Fixed const& a) {
 	Fixed		res;
 	long int	x;
 	long int	y;
@@ -121,14 +133,12 @@ Fixed	Fixed::operator/(Fixed const& a)
 	return res;
 }
 
-Fixed & Fixed::operator++()
-{
+Fixed & Fixed::operator++() {
 	++this->m_value;
 	return (*this);
 }
 
-Fixed	Fixed::operator++(int)
-{
+Fixed	Fixed::operator++(int) {
 	Fixed	tmp;
 
 	tmp = *this;
@@ -136,14 +146,12 @@ Fixed	Fixed::operator++(int)
 	return (tmp);
 }
 
-Fixed & Fixed::operator--()
-{
+Fixed & Fixed::operator--() {
 	--this->m_value;
 	return (*this);
 }
 
-Fixed	Fixed::operator--(int)
-{
+Fixed	Fixed::operator--(int) {
 	Fixed	tmp;
 
 	tmp = *this;
@@ -151,5 +159,10 @@ Fixed	Fixed::operator--(int)
 	return (tmp);
 }
 
-std::ostream & operator << (std::ostream &out, const Fixed &c)
-{ return (out << c.toFloat()); }
+//			//
+//	Display	//
+//			//
+
+std::ostream & operator << (std::ostream &out, const Fixed &c) {
+	return (out << c.toFloat());
+}

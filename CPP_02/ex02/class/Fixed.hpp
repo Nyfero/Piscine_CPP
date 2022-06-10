@@ -8,7 +8,7 @@
 class Fixed
 {
 	private:
-		int		m_value;
+		int					m_value;
 		static const int	m_bits = 8;
 
 	public:
