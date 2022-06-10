@@ -1,36 +1,74 @@
-#include "../class/Base.hpp"
+# include "../class/Base.hpp"
 
 Base::~Base()
-{}
+{ std::cout << "Base Destructor call" << std::endl; }
 
-Base * generate(void)
+Base	*generate(void)
 {
-  srand (time(NULL));
-  int	i = rand() % 3;
+	srand (time(NULL));
+	int	i = rand() % 3;
 
-  if (i == 0)
-  {
-    A *a = NULL;
-    std::cout << "It's an A !" << std::endl;
-    return (a);
-  }
-  else if (i == 1)
-  {
-    B *b = NULL;
-    std::cout << "It's a B !" << std::endl;
-    return (b);
-  }
-  C *c = NULL;
-  std::cout << "It's a C !" << std::endl;
-  return (c);
+	switch(i)
+	{
+		case 0:
+		{
+			std:: cout << "\e[93mA is created\e[39m" << std::endl;
+			return (new A);
+		}
+		case 1:
+		{
+			std:: cout << "\e[93mB is created\e[39m" << std::endl;
+			return (new B);
+		}
+		case 2:
+		{
+			std:: cout << "\e[93mC is created\e[39m" << std::endl;
+			return (new C);
+		}
+	}
+	std::cout << "An error occured" << std::endl;
+	return (NULL);
 }
 
-void identify(Base *p)
+void	identify(Base *p)
 {
-  try
-  {
-    A *a;
-    a = dynamic_cast<A>(p);
-    ""
-  }
+	A	*Aptr = dynamic_cast<A*>(p);
+	B	*Bptr = dynamic_cast<B*>(p);
+	C	*Cptr = dynamic_cast<C*>(p);
+
+	if (Aptr)
+		std::cout << "\e[92mIt's an A\e[39m" << std::endl;
+	else if (Bptr)
+		std::cout << "\e[92mIt's a B\e[39m" << std::endl;
+	else if (Cptr)
+		std::cout << "\e[92mIt's a C\e[39m" << std::endl;
+	else
+		std:: cout << "\e[91mNot a Base Child\e[39m" << std::endl;
+}
+
+void	identify(Base &p)
+{
+	try
+	{
+		A	Aptr = dynamic_cast<A&>(p);
+		std::cout << "\e[92mIt's an A\e[39m" << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		try
+		{
+			B	Bptr = dynamic_cast<B&>(p);
+			std::cout << "\e[92mIt's a B\e[39m" << std::endl;
+		}
+		catch (const std::exception& e)
+		{
+			try
+			{
+				C	Cptr = dynamic_cast<C&>(p);
+				std::cout << "\e[92mIt's a C\e[39m" << std::endl;
+			}
+			catch (const std::exception & e)
+			{ std::cerr << e.what() << std::endl; }
+		}
+	}
 }
