@@ -7,9 +7,10 @@
 DiamondTrap::DiamondTrap(): ClapTrap("DiamondTrap_clap_name"), FragTrap()
 	, ScavTrap(), m_name("DiamondTrap") {
 	std::cout << "DiamondTrap Constructor by default call" << std::endl;
-	this->m_life = FragTrap::m_life;
-	this->m_mana = ScavTrap::m_mana;
-	this->m_dmg = FragTrap::m_dmg;
+	this->m_life = 100;
+	this->m_mana = 100;
+	this->m_dmg = 30;
+	std::cout << "m_life: " << this->m_life << "\nm_mana: " << this->m_mana << "\nm_dmg: " << this->m_dmg << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
