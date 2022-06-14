@@ -13,14 +13,17 @@ class RobotomyRequestForm : public A_Form
 		std::string	m_target;
 
 	public:
+		//Constructors
 		RobotomyRequestForm(std::string a_target);
 		RobotomyRequestForm(RobotomyRequestForm const& src);
 		RobotomyRequestForm & operator=(RobotomyRequestForm const& src);
 		~RobotomyRequestForm();
 	
+		//Functions
 		virtual void	execute(Bureaucrat const& executor) const;
 		std::string		GetTarget() const;
 };
 
+//Display
 std::ostream & operator << (std::ostream &out, const RobotomyRequestForm &c);
 #endif

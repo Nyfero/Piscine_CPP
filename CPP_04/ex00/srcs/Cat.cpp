@@ -4,9 +4,8 @@
 //	Constructors	//
 //					//
 
-Cat::Cat(): Animal() {
+Cat::Cat(): Animal("Cat") {
 	std::cout << "Cat Constructor by default call" << std::endl;
-	this->m_type = "Cat";
 }
 
 Cat::~Cat() {

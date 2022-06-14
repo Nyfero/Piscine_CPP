@@ -16,9 +16,11 @@ class MutantStack: public std::stack<T>
 		//Constructors
 		MutantStack(): std::stack<T>() {}
 		~MutantStack() {}
-		MutantStack(MutantStack const& src) { this->c = src.c; }
+		MutantStack(MutantStack const& src) {
+			this->src = src.src;
+		}
 		MutantStack & operator=(MutantStack const& src) { 
-			this->c = src.c;
+			this->src = src.src;
 			return (*this);
 		}
 		

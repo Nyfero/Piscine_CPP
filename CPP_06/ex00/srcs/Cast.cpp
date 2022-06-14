@@ -1,12 +1,11 @@
 # include "../class/Cast.hpp"
 
 //					//
-//	Canonical Form	//
+//	Constructors	//
 //					//
 
 Cast::Cast(char *av): m_type(0), m_char(0), m_charImpossible(0), m_charNonDisplay(0),
-	m_int(0), m_intImpossible(0), m_float(0), m_double(0), m_precision(0)
-{
+	m_int(0), m_intImpossible(0), m_float(0), m_double(0), m_precision(0) {
 	if (IsInt(av))
 		SetFromInt();
 	else if (IsChar(av))
@@ -20,14 +19,13 @@ Cast::Cast(char *av): m_type(0), m_char(0), m_charImpossible(0), m_charNonDispla
 	SetSpec();
 }
 
-Cast::~Cast()
-{}
+Cast::~Cast() {}
 
-Cast::Cast(Cast const& src)
-{ *this = src; }
+Cast::Cast(Cast const& src) {
+	*this = src;
+}
 
-Cast & Cast::operator=(Cast const& src)
-{
+Cast & Cast::operator=(Cast const& src) {
 	this->m_char = src.m_char;
 	this->m_int = src.m_int;
 	this->m_float = src.m_float;
@@ -39,15 +37,15 @@ Cast & Cast::operator=(Cast const& src)
 //	Throw Exception	//
 //					//
 
-const char* Cast::ErrorNoType::what() const throw()
-{ return ("\e[0;31mWhat the hell is this !\e[0m"); }
+const char* Cast::ErrorNoType::what() const throw() {
+	return ("\e[0;31mWhat the hell is this !\e[0m");
+}
 
 //				//
 //	Functions	//
 //				//
 
-bool	Cast::IsChar(char *av)
-{
+bool	Cast::IsChar(char *av) {
 	if (av[1] != 0 || !std::isprint(av[0]))
 		return (FALSE);
 	this->m_type = CHAR;
@@ -55,12 +53,11 @@ bool	Cast::IsChar(char *av)
 	return (TRUE);
 }
 
-bool	Cast::IsInt(char *av)
-{
+bool	Cast::IsInt(char *av) {
 	long int	nb = strtol(av, NULL, 10);
 	int			i = 0;
 	
-	if (nb < INT_MIN || nb > INT_MAX)//Vérifie max et min int
+	if (nb < INT_MIN || nb > INT_MAX)
 		return (FALSE);
 	if (std::isdigit(av[0]) || av[0] == '+' || av[0] == '-')
 	{
@@ -75,8 +72,7 @@ bool	Cast::IsInt(char *av)
 	return (TRUE);
 }
 
-bool	Cast::IsFloat(char *av)
-{
+bool	Cast::IsFloat(char *av) {
 	int			i = 0;
 	int			compt = 0;
 	int			len = 0;
@@ -118,8 +114,7 @@ bool	Cast::IsFloat(char *av)
 	return (TRUE);
 }
 
-bool	Cast::IsDouble(char *av)
-{
+bool	Cast::IsDouble(char *av) {
 	double		d = strtod(av, NULL);
 	int			i = 0;
 	int			compt = 0;
@@ -164,8 +159,7 @@ bool	Cast::IsDouble(char *av)
 //	Setter	//
 //			//
 
-void	Cast::SetFromChar()
-{
+void	Cast::SetFromChar() {
 	std::cout << "From Char" << std::endl;
 
 	this->m_int = static_cast<int>(m_char);
@@ -173,8 +167,7 @@ void	Cast::SetFromChar()
 	this->m_double = static_cast<double>(m_char);
 }
 
-void	Cast::SetFromInt()
-{
+void	Cast::SetFromInt() {
 	std::cout << "From Int" << std::endl;
 
 	this->m_char = static_cast<char>(m_int);
@@ -182,16 +175,15 @@ void	Cast::SetFromInt()
 	this->m_double = static_cast<double>(m_int);
 }
 
-void	Cast::SetFromFloat()
-{
+void	Cast::SetFromFloat() {
 	std::cout << "From Float" << std::endl;
 
 	this->m_char = static_cast<char>(m_float);
 	this->m_int = static_cast<int>(m_float);
 	this->m_double = static_cast<double>(m_float);
 }
-void	Cast::SetFromDouble()
-{
+
+void	Cast::SetFromDouble() {
 	std::cout << "From Double" << std::endl;
 
 	this->m_char = static_cast<char>(m_double);
@@ -199,8 +191,7 @@ void	Cast::SetFromDouble()
 	this->m_float = static_cast<float>(m_double);
 }
 
-void	Cast::SetSpec()
-{
+void	Cast::SetSpec() {
 	double	d = this->m_double;
 	
 	if (d > INT_MAX || d < INT_MIN || std::isnan(d) || std::isinf(d))
@@ -218,8 +209,7 @@ void	Cast::SetSpec()
 //	Display	//
 //			//
 
-void	Cast::Display() const
-{
+void	Cast::Display() const {
 	std::cout << "Char: ";
 	if (this->m_charImpossible)
 		std::cout << "impossible" << std::endl;

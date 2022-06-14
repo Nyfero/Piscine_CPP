@@ -4,9 +4,8 @@
 //	Constructors	//
 //					//
 
-Cat::Cat(): A_Animal() {
+Cat::Cat(): A_Animal("Cat") {
 	std::cout << "Cat Constructor by default call" << std::endl;
-	this->m_type = "Cat";
 	this->m_brain = new Brain();
 }
 
@@ -43,9 +42,11 @@ void	Cat::makeSound() const {
 }
 
 void	Cat::setIdeas() {
+	std::cout << "---Set Ideas---" << std::endl;
 	this->m_brain->set3Ideas("Destroy", "all", "Human");
 }
 
 void	Cat::printIdeas() const {
+	std::cout << "---Show Ideas---" << std::endl;
 	this->m_brain->printIdeas();
 }

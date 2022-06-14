@@ -1,5 +1,9 @@
 # include "../class/Span.hpp"
 
+//					//
+//	Constructors	//
+//					//
+
 Span::Span(): m_size(0), m_compt(0) {
 	this->m_array.resize(0);
 	std::cout << "Span Constructor by default call" << std::endl;
@@ -32,6 +36,10 @@ Span & Span::operator=(Span const& src) {
 	std::cout << "Span Constructor by assignement call" << std::endl;
 	return (*this);
 }
+
+//				//
+//	Functions	//
+//				//
 
 void	Span::addNumber(int nb) {
 	if (this->m_compt >= this->m_size)
@@ -72,8 +80,7 @@ int		Span::longestSpan() const {
 	return (ret - tmp.m_array[0]);
 }
 
-void	Span::addRange(int size)
-{
+void	Span::addRange(int size) {
 	for (int i = 0; i < size; i++)
 	{
 		if (this->m_compt >= this->m_size)
@@ -83,8 +90,7 @@ void	Span::addRange(int size)
 	}
 }
 
-void	Span::addList(std::vector<int>	tab)
-{
+void	Span::addList(std::vector<int>	tab) {
 	int size = tab.size();
 	if (size + this->m_compt > this->m_size)
 		throw ToManyElement();

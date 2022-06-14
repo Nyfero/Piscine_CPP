@@ -1,72 +1,75 @@
 # include "../class/Bureaucrat.hpp"
 
-/*
-**	Canonical Form
-*/
+//					//
+//	Constructors	//
+//					//
 
-Bureaucrat::Bureaucrat(std::string a_name, int a_grade): m_name(a_name)
-{
+Bureaucrat::Bureaucrat(std::string a_name, int a_grade): m_name(a_name) {
 	if (a_grade <= 0)
 		throw GradeTooHighException();
 	if (a_grade >= 151)
 		throw GradeTooLowException();
-	m_grade = a_grade;
+	this->m_grade = a_grade;
 	std::cout << "Bureaucrat is created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const& src): m_name(src.m_name), m_grade(src.m_grade)
-{ std::cout << this->m_name << " Bureaucrat copy constuctor call; rank: " << this->m_grade << std::endl; }
+Bureaucrat::Bureaucrat(Bureaucrat const& src): m_name(src.m_name), m_grade(src.m_grade) {
+	std::cout << this->m_name << " Bureaucrat copy constuctor call; rank: " << this->m_grade << std::endl;
+}
 
-Bureaucrat & Bureaucrat::operator=(Bureaucrat const& src)
-{
-	if (this != &src)
+Bureaucrat & Bureaucrat::operator=(Bureaucrat const& src) {
 	this->m_grade = src.m_grade;
 	std::cout << this->m_name << " Bureaucrat assignement constuctor call; rank: " << this->m_grade << std::endl;
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat()
-{ std::cout << "Bureaucrat Destructor call" << std::endl; }
+Bureaucrat::~Bureaucrat() {
+	std::cout << "Bureaucrat Destructor call" << std::endl;
+}
 
-/*
-**	Functions
-*/
+//			//
+//	Throw	//
+//			//
 
-std::string	Bureaucrat::GetName() const
-{ return this->m_name; }
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("\e[91mGrade is too high\e[39m");
+}
 
-int Bureaucrat::GetGrade() const
-{ return this->m_grade; }
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("\e[91mGrade is too low\e[39m");
+}
 
-void	Bureaucrat::PromoteGrade()
-{
+//				//
+//	Functions	//
+//				//
+
+std::string	Bureaucrat::GetName() const {
+	return (this->m_name);
+}
+
+int Bureaucrat::GetGrade() const {
+	return (this->m_grade);
+}
+
+void	Bureaucrat::PromoteGrade() {
 	std::cout << this->m_name << " his promoted" << std::endl;
 	if (this->m_grade == 1)
-	throw GradeTooHighException();
+		throw GradeTooHighException();
 	this->m_grade--;
 }
 
-void	Bureaucrat::DemoteGrade()
-{
+void	Bureaucrat::DemoteGrade() {
 	std::cout << this->m_name << " his demoted" << std::endl;
 	if (this->m_grade == 150)
-	throw GradeTooLowException();
+		throw GradeTooLowException();
 	this->m_grade++;
 }
 
-/*
-**	Throw Exception
-*/
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
-{ return ("\e[91mGrade is too high\e[39m"); }
+//			//
+//	Display	//
+//			//
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
-{ return ("\e[91mGrade is too low\e[39m"); }
-
-/*
-**	Output
-*/
-
-std::ostream & operator << (std::ostream &out, const Bureaucrat &c)
-{ return (out << c.GetName() << ", bureaucrat grade " << c.GetGrade()); }
+std::ostream & operator << (std::ostream &out, const Bureaucrat &c) {
+	return (out << c.GetName() << ", bureaucrat grade " << c.GetGrade());
+}

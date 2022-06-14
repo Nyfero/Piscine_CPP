@@ -30,7 +30,7 @@ FILES = main.cpp Bureaucrat.cpp
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Bureaucrat
+NAME = MafiaCity
 
 CXX = c++
 

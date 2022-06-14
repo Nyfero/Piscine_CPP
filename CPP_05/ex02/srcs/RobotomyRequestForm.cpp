@@ -1,24 +1,35 @@
 # include "../class/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string a_target): A_Form("Robotomy", 72, 45), m_target(a_target)
-{ std::cout << "RobotomyRequestForm Constructor surcharged call" << std::endl; }
+//					//
+//	Constructors	//
+//					//
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& src): A_Form(src), m_target(src.m_target)
-{ std::cout << "RobotomyRequestForm Constructor by copy call" << std::endl; }
+RobotomyRequestForm::RobotomyRequestForm(std::string a_target): A_Form("Robotomy", 72, 45),
+	m_target(a_target) {
+	std::cout << "RobotomyRequestForm Constructor surcharged call" << std::endl;
+}
 
-RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const& src)
-{
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& src): A_Form(src),
+	m_target(src.m_target) {
+	std::cout << "RobotomyRequestForm Constructor by copy call" << std::endl;
+}
+
+RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const& src) {
 	A_Form::operator=(src);
 	this->m_target = src.m_target;
 	std::cout << "RobotomyRequestForm Constructor by assignement call" << std::endl;
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm()
-{ std::cout << "RobotomyRequestForm Destructor by default" << std::endl; }
+RobotomyRequestForm::~RobotomyRequestForm() {
+	std::cout << "RobotomyRequestForm Destructor by default" << std::endl;
+}
 
-void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
-{
+//				//
+//	Functions	//
+//				//
+
+void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
 	srand (time(NULL));
 	int	i = rand() % 1;
 
@@ -39,8 +50,14 @@ void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 	}
 }
 
-std::string	RobotomyRequestForm::GetTarget() const
-{ return (this->m_target); }
+std::string	RobotomyRequestForm::GetTarget() const {
+	return (this->m_target);
+}
 
-std::ostream & operator << (std::ostream &out, const RobotomyRequestForm &c)
-{ return (out << c.GetName() << ", RobotomyRequestForm is signed: " << c.IsSigned() << ", RobotomyRequestForm level to signed: " << c.GetSign() << ", RobotomyRequestForm level to execute: " << c.GetExec() << ", File to execute: " << c.GetTarget()); }
+//			//
+//	Display	//
+//			//
+
+std::ostream & operator << (std::ostream &out, const RobotomyRequestForm &c) {
+	return (out << c.GetName() << ", RobotomyRequestForm is signed: " << c.IsSigned() << ", RobotomyRequestForm level to signed: " << c.GetSign() << ", RobotomyRequestForm level to execute: " << c.GetExec() << ", File to execute: " << c.GetTarget());
+}

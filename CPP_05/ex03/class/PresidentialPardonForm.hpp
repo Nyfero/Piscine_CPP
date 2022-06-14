@@ -11,14 +11,17 @@ class PresidentialPardonForm : public A_Form
 		std::string	m_target;
 
 	public:
+		//Constructors
 		PresidentialPardonForm(std::string a_target);
 		PresidentialPardonForm(PresidentialPardonForm const& src);
 		PresidentialPardonForm & operator=(PresidentialPardonForm const& src);
 		~PresidentialPardonForm();
 	
+		//Functions
 		virtual void	execute(Bureaucrat const& executor) const;
 		std::string		GetTarget() const;
 };
 
+//Display
 std::ostream & operator << (std::ostream &out, const PresidentialPardonForm &c);
 #endif

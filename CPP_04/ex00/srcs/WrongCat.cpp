@@ -4,9 +4,8 @@
 //	Constructors	//
 //					//
 
-WrongCat::WrongCat(): WrongAnimal() {
+WrongCat::WrongCat(): WrongAnimal("WrongCat") {
 	std::cout << "WrongCat Constructor by default call" << std::endl;
-	this->m_type = "WrongCat";
 }
 
 WrongCat::~WrongCat() {

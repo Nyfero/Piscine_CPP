@@ -32,13 +32,13 @@ class Cast
 		int			m_precision;
 
 	public:
-		//Orthodox Canonical Form
+		//Constructors
 		Cast(char *av);
 		~Cast();
 		Cast(Cast const& src);
 		Cast & operator=(Cast const& src);
 		
-		// throw exception
+		//Throw
 		class ErrorNoType : public std::exception
 		{
 			public:

@@ -1,10 +1,10 @@
 # include "../class/Base.hpp"
 
-Base::~Base()
-{ std::cout << "Base Destructor call" << std::endl; }
+Base::~Base() {
+	std::cout << "Base Destructor call" << std::endl;
+}
 
-Base	*generate(void)
-{
+Base	*generate(void) {
 	srand (time(NULL));
 	int	i = rand() % 3;
 
@@ -30,8 +30,7 @@ Base	*generate(void)
 	return (NULL);
 }
 
-void	identify(Base *p)
-{
+void	identify(Base *p) {
 	A	*Aptr = dynamic_cast<A*>(p);
 	B	*Bptr = dynamic_cast<B*>(p);
 	C	*Cptr = dynamic_cast<C*>(p);
@@ -46,8 +45,7 @@ void	identify(Base *p)
 		std:: cout << "\e[91mNot a Base Child\e[39m" << std::endl;
 }
 
-void	identify(Base &p)
-{
+void	identify(Base &p) {
 	try
 	{
 		A	Aptr = dynamic_cast<A&>(p);

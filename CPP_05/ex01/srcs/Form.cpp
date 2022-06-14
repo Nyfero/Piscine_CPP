@@ -1,46 +1,69 @@
 # include "../class/Form.hpp"
 
-Form::Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false), m_sign(a_sign), m_exec(a_exec)
-{ std::cout << "Form Constructor surcharged call" << std::endl; }
+//					//
+//	Constructors	//
+//					//
 
-Form::Form(Form const& src): m_name(src.m_name), m_isSigned(src.m_isSigned), m_sign(src.m_sign), m_exec(src.m_exec)
-{ std::cout << "Form Constructor by copy call" << std::endl; }
+Form::Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false),
+	m_sign(a_sign), m_exec(a_exec) {
+	std::cout << "Form Constructor surcharged call" << std::endl;
+}
 
-Form & Form::operator=(Form const& src)
-{
+Form::Form(Form const& src): m_name(src.m_name), m_isSigned(src.m_isSigned),
+	m_sign(src.m_sign), m_exec(src.m_exec) {
+	std::cout << "Form Constructor by copy call" << std::endl;
+}
+
+Form & Form::operator=(Form const& src) {
 	this->m_isSigned = src.m_isSigned;
 	std::cout << "Form Constructor by assignement call" << std::endl;
 	return (*this);
 }
 
-Form::~Form()
-{ std::cout << "Form Destructor by default" << std::endl; }
+Form::~Form() {
+	std::cout << "Form Destructor by default" << std::endl;
+}
 
-const char* Form::GradeTooHighException::what() const throw()
-{ return ("\e[91mGrade is too high it' s out of your bounds\e[39m"); }
+//			//
+//	Throw	//
+//			//
 
-const char* Form::GradeTooLowException::what() const throw()
-{ return ("\e[91mGrade is too low it' s out of your bounds\e[39m"); }
+const char* Form::GradeTooLowToSign::what() const throw() {
+	return ("\e[91mNo i can't sign this\e[39m");
+}
 
-std::string Form::GetName() const
-{ return (this->m_name); }
+//				//
+//	Functions	//
+//				//
 
-bool Form::IsSigned() const
-{ return (this->m_isSigned); }
+std::string Form::GetName() const {
+	return (this->m_name);
+}
 
-int Form::GetSign() const
-{ return (this->m_sign); }
+bool Form::IsSigned() const {
+	return (this->m_isSigned);
+}
 
-int Form::GetExec() const
-{ return (this->m_exec); }
+int Form::GetSign() const {
+	return (this->m_sign);
+}
 
-std::ostream & operator << (std::ostream &out, const Form &c)
-{ return (out << c.GetName() << ", Form is signed: " << c.IsSigned() << ", Form level to signed: " << c.GetSign() << ", Form level to execute: " << c.GetExec()); }
+int Form::GetExec() const {
+	return (this->m_exec);
+}
 
-void Form::beSigned(Bureaucrat const& src)
-{
-	std::cout << src.GetName() << " sign " << this->m_name << " ?" << std::endl;
+void Form::beSigned(Bureaucrat const& src) {
+	std::cout << src.GetName() << " could you sign " << this->m_name << " ?" << std::endl;
 	if (src.GetGrade() > this->m_sign)
-		throw GradeTooLowException();
+		throw GradeTooLowToSign();
+	std::cout << "Yes" << std::endl;
 	this->m_isSigned = true;
+}
+
+//			//
+//	Display	//
+//			//
+
+std::ostream & operator << (std::ostream &out, const Form &c) {
+	return (out << c.GetName() << ", Form is signed: " << c.IsSigned() << ", Form level to signed: " << c.GetSign() << ", Form level to execute: " << c.GetExec());
 }

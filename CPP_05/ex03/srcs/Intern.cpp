@@ -1,26 +1,49 @@
 # include "../class/Intern.hpp"
 
-Intern::Intern()
-{ std::cout << "Intern Constructor by default call" << std::endl; }
+//					//
+//	Constructors	//
+//					//
 
-Intern::~Intern()
-{ std::cout << "Intern Destructor call" << std::endl; }
+Intern::Intern() {
+	std::cout << "Intern Constructor by default call" << std::endl;
+}
 
-Intern::Intern(Intern const& src)
-{
+Intern::~Intern() {
+	std::cout << "Intern Destructor call" << std::endl;
+}
+
+Intern::Intern(Intern const& src) {
 	(void)src;
 	std::cout << "Intern Constructor by copy call" << std::endl;
 }
 
-Intern & Intern::operator=(Intern const& src)
-{
+Intern & Intern::operator=(Intern const& src) {
 	(void)src;
 	std::cout << "Intern Constructor by assignement call" << std::endl;
 	return (*this);
 }
 
-A_Form	*Intern::makeForm(std::string nameForm, std::string target)
-{
+//						//
+//	Privates functions	//
+//						//
+
+A_Form	*Intern::Shrubberry(std::string target) {
+	return (new ShrubberyCreationForm(target));
+}
+
+A_Form	*Intern::Robotomy(std::string target) {
+	return (new RobotomyRequestForm(target));
+}
+
+A_Form	*Intern::Presidential(std::string target) {
+	return (new PresidentialPardonForm(target));
+}
+
+//				//
+//	Functions	//
+//				//
+
+A_Form	*Intern::makeForm(std::string nameForm, std::string target) {
 	int		i = 0;
 	std::string	str[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	A_Form	*(Intern::*func[3])(std::string target) = {&Intern::Shrubberry, &Intern::Robotomy, &Intern::Presidential};
@@ -37,12 +60,3 @@ A_Form	*Intern::makeForm(std::string nameForm, std::string target)
 	std::cout << "Intern can't create " << nameForm << std::endl;
 	return (NULL);
 }
-
-A_Form	*Intern::Shrubberry(std::string target)
-{ return (new ShrubberyCreationForm(target)); }
-
-A_Form	*Intern::Robotomy(std::string target)
-{ return (new RobotomyRequestForm(target)); }
-
-A_Form	*Intern::Presidential(std::string target)
-{ return (new PresidentialPardonForm(target)); }

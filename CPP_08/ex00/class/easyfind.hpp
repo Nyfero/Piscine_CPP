@@ -7,6 +7,10 @@
 # include <algorithm>
 # include <vector>
 
+//			//
+//	Throw	//
+//			//
+
 class ElementNotFound : public std::exception
 {
 	public:
@@ -14,6 +18,10 @@ class ElementNotFound : public std::exception
 				return ("\e[91mThe element is not in this array !\e[39m");
 		}
 };
+
+//				//
+//	Functions	//
+//				//
 
 template< typename T >
 int	easyfind(T cont, int x) {
@@ -30,4 +38,5 @@ void	DispVector(T tab, int size) {
 	for (int i = 0; i < size; i++)
 		std::cout << "tab[" << i << "] => " << tab[i] << std::endl;
 }
+
 #endif

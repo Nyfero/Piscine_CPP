@@ -15,18 +15,13 @@ class Bureaucrat
 		int					m_grade;
 
 	public:
+		//Constructors
 		Bureaucrat(std::string a_name, int a_grade);
 		Bureaucrat(Bureaucrat const& src);
 		Bureaucrat & operator=(Bureaucrat const& src);
 		~Bureaucrat();
 
-		std::string	GetName() const;
-		int			GetGrade() const;
-		void		PromoteGrade();
-		void		DemoteGrade();
-		
-		void		signForm(Form const& src);
-	
+		//Throw
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -38,7 +33,15 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw();
 		};
+		
+		//Functions
+		std::string	GetName() const;
+		int			GetGrade() const;
+		void		PromoteGrade();
+		void		DemoteGrade();
+		void		signForm(Form const& src);
 };
 
+//Display
 std::ostream & operator << (std::ostream &out, const Bureaucrat &c);
 #endif

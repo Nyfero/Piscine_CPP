@@ -12,14 +12,17 @@ class ShrubberyCreationForm : public A_Form
 		std::string	m_target;
 
 	public:
+		//Constructors
 		ShrubberyCreationForm(std::string a_target);
 		ShrubberyCreationForm(ShrubberyCreationForm const& src);
 		ShrubberyCreationForm & operator=(ShrubberyCreationForm const& src);
 		~ShrubberyCreationForm();
 		
+		//Functions
 		virtual void	execute(Bureaucrat const& executor) const;
 		std::string		GetTarget() const;
 };
 
+//Display
 std::ostream & operator << (std::ostream &out, const ShrubberyCreationForm &c);
 #endif

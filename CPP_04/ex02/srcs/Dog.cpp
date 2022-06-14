@@ -4,9 +4,8 @@
 //	Constructors	//
 //					//
 
-Dog::Dog(): A_Animal() {
+Dog::Dog(): A_Animal("Dog") {
 	std::cout << "Dog Constructor by default call" << std::endl;
-	this->m_type = "Dog";
 	this->m_brain = new Brain();
 }
 
