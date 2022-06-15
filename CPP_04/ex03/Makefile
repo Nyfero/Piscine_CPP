@@ -20,17 +20,17 @@ endif
 #	Includes
 CLASS_PATH = class
 
-CLASS = $(addprefix $(CLASS_PATH)/, A_Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp)
+CLASS = $(addprefix $(CLASS_PATH)/, A_Materia.hpp )#Ice.hpp Cure.hpp Character.hpp MateriaSource.hpp)
 
 #    Files
 SRCS_PATH = srcs
 
-FILES = main.cpp A_Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+FILES = main.cpp A_Materia.cpp #Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 
 SRCS = $(addprefix $(SRCS_PATH)/, $(FILES))
 
 #    Compilation
-NAME = Abstract
+NAME = A_Materia
 
 CXX = c++
 

@@ -12,6 +12,10 @@ class AMateria
 	
 	public:
 		//Constructors
+		AMateria();
+		virtual ~AMateria();
+		AMateria(AMateria const& src);
+		AMateria & operator=(AMateria const& src);
 		AMateria(std::string const & type);
 		
 		//Functions
