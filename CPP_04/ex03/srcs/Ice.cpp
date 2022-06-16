@@ -29,5 +29,12 @@ Ice & Ice::operator=(Ice const& src) {
 //				//
 
 AMateria	*Ice::clone() const {
+	AMateria	*dup = new Ice();
 	
+	*dup = *this;
+	return (dup);
+}
+
+void	Ice::use(ICharacter& target) {
+	std::cout << "\e[96m* shoots an ice bolt at " << target.getName() << " *\e[39m" << std::endl;
 }

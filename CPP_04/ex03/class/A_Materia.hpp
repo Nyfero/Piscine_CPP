@@ -1,9 +1,12 @@
 #ifndef A_MATERIA_HPP
 # define A_MATERIA_HPP
 
+# include "ICharacter.hpp"
 # include <string>
 # include <iostream>
 # include <iomanip>
+
+class ICharacter;
 
 class AMateria
 {
@@ -21,7 +24,7 @@ class AMateria
 		//Functions
 		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual void use(ICharacter& target) = 0;
 };
 
 #endif

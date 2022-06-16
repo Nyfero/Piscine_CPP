@@ -1,5 +1,5 @@
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef CURE_HPP
+# define CURE_HPP
 
 # include "A_Materia.hpp"
 # include "ICharacter.hpp"
@@ -7,16 +7,16 @@
 # include <iostream>
 # include <iomanip>
 
-class Ice: public AMateria
+class Cure: public AMateria
 {
 	private:
 		
 	public:
 		//Constructors
-		Ice();
-		~Ice();
-		Ice(Ice const& src);
-		Ice & operator=(Ice const& src);
+		Cure();
+		~Cure();
+		Cure(Cure const& src);
+		Cure & operator=(Cure const& src);
 		
 		//Functions
 		virtual AMateria* clone() const;
