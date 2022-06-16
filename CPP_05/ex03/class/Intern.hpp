@@ -20,7 +20,7 @@ class Intern
 		Intern();
 		Intern(Intern const& src);
 		Intern & operator=(Intern const& src);
-		~Intern();
+		virtual ~Intern();
 		
 		//Functions
 		A_Form	*makeForm(std::string nameForm, std::string target);

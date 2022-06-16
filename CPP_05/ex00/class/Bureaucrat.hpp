@@ -16,7 +16,7 @@ class Bureaucrat
 		Bureaucrat(std::string a_name, int a_grade);
 		Bureaucrat(Bureaucrat const& src);
 		Bureaucrat & operator=(Bureaucrat const& src);
-		~Bureaucrat();
+		virtual ~Bureaucrat();
 
 		//throw
 		class GradeTooHighException : public std::exception

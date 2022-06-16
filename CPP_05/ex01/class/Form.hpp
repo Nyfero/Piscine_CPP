@@ -20,7 +20,7 @@ class Form
 		Form(std::string a_name, int a_sign, int a_exec);
 		Form(Form const& src);
 		Form & operator=(Form const& src);
-		~Form();
+		virtual ~Form();
 		
 		//Throw
 		class GradeTooLowToSign: public std::exception
