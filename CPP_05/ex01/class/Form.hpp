@@ -10,6 +10,7 @@ class Bureaucrat;
 class Form
 {
 	private:
+		Form();
 		const std::string	m_name;
 		bool				m_isSigned;
 		const int			m_sign;
@@ -23,18 +24,24 @@ class Form
 		virtual ~Form();
 		
 		//Throw
-		class GradeTooLowToSign: public std::exception
+		class GradeTooLowException: public std::exception
 		{
 			public:
 				virtual const char* what() const throw();
 		};
 
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		
 		//Functions
 		std::string	GetName() const;
 		bool		IsSigned() const;
 		int			GetSign() const;
 		int			GetExec() const;
-		void		beSigned(Bureaucrat const& src);
+		void		beSigned(Bureaucrat src);
 };
 
 //Display

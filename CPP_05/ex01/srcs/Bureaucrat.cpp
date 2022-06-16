@@ -65,13 +65,17 @@ void	Bureaucrat::DemoteGrade() {
 	this->m_grade++;
 }
 
-void	Bureaucrat::signForm(Form const& src) {
-	std::cout << this->m_name << " can signed " << src.GetName() << " ?" << std::endl;
-	if (src.IsSigned() == true)
+void	Bureaucrat::signForm(Form src) {
+	try
+	{
+		src.beSigned(*this);
 		std::cout << this->m_name << " signed " << src.GetName() << std::endl;
-	else
-		std::cout << this->m_name << " couldn't signed " << src.GetName() << " because he is to low level" << std::endl;
-		
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << this->m_name << " couldn't signed " << src.GetName() << " because ";
+		std::cerr << e.what() << std::endl;
+	}	
 }
 
 //			//

@@ -28,8 +28,12 @@ Form::~Form() {
 //	Throw	//
 //			//
 
-const char* Form::GradeTooLowToSign::what() const throw() {
-	return ("\e[91mNo i can't sign this\e[39m");
+const char* Form::GradeTooLowException::what() const throw() {
+	return ("\e[91mI'm to low level\e[39m");
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return ("\e[91mI'm to high level\e[39m");
 }
 
 //				//
@@ -52,11 +56,12 @@ int Form::GetExec() const {
 	return (this->m_exec);
 }
 
-void Form::beSigned(Bureaucrat const& src) {
+void Form::beSigned(Bureaucrat src) {
 	std::cout << src.GetName() << " could you sign " << this->m_name << " ?" << std::endl;
 	if (src.GetGrade() > this->m_sign)
-		throw GradeTooLowToSign();
-	std::cout << "Yes" << std::endl;
+		throw GradeTooLowException();
+	if (src.GetGrade() <= 0)
+		throw GradeTooHighException();
 	this->m_isSigned = true;
 }
 

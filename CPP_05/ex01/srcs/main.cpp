@@ -35,11 +35,22 @@ int main()
 		}
 		std::cout << "\e[93m" << nuclear << "\e[39m" << std::endl << std::endl;
 		
-		boss.signForm(declaration);
-		boss.signForm(nuclear);
+		try
+		{
+			boss.signForm(declaration);
+			boss.signForm(nuclear);
+		}
+		catch (const std::exception& e)
+		{ std::cerr << e.what() << std::endl; }
 		std::cout << std::endl;
-		stagiaire.signForm(declaration);
-		stagiaire.signForm(nuclear);
+		
+		try
+		{
+			stagiaire.signForm(declaration);
+			stagiaire.signForm(nuclear);
+		}
+		catch (const std::exception& e)
+		{ std::cerr << e.what() << std::endl; }
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;

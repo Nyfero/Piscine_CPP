@@ -45,9 +45,11 @@ int A_Form::GetExec() const {
 }
 
 void A_Form::beSigned(Bureaucrat & src) {
-	std::cout << src.GetName() << " sign " << this->m_name << " ?" << std::endl;
+	std::cout << src.GetName() << " could you sign " << this->m_name << " ?" << std::endl;
 	if (src.GetGrade() > this->m_sign)
-		throw GradeTooLowSigned();
+		throw GradeTooLowException();
+	if (src.GetGrade() <= 0)
+		throw GradeTooHighException();
 	this->m_isSigned = true;
 }
 
@@ -59,8 +61,12 @@ const char* A_Form::GradeTooLowExecute::what() const throw() {
 	return ("\e[91mGrade is too low to execute\e[39m");
 }
 
-const char* A_Form::GradeTooLowSigned::what() const throw() {
-	return ("\e[91mGrade is too low to signed\e[39m");
+const char* A_Form::GradeTooLowException::what() const throw() {
+	return ("\e[91mI'm to low level\e[39m");
+}
+
+const char* A_Form::GradeTooHighException::what() const throw() {
+	return ("\e[91mI'm to high level\e[39m");
 }
 
 const char* A_Form::FormNotSigned::what() const throw() {

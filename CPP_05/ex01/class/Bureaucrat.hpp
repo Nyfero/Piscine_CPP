@@ -39,7 +39,7 @@ class Bureaucrat
 		int			GetGrade() const;
 		void		PromoteGrade();
 		void		DemoteGrade();
-		void		signForm(Form const& src);
+		void		signForm(Form src);
 };
 
 //Display

@@ -29,10 +29,16 @@ class A_Form
 			virtual const char* what() const throw();
 		};
 		
-		class GradeTooLowSigned: public std::exception
+		class GradeTooLowException: public std::exception
 		{
-		public:
-			virtual const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
 		};
 		
 		class FormNotSigned : public std::exception
