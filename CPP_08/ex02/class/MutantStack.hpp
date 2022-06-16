@@ -15,7 +15,7 @@ class MutantStack: public std::stack<T>
 	public:
 		//Constructors
 		MutantStack(): std::stack<T>() {}
-		~MutantStack() {}
+		virtual ~MutantStack() {}
 		MutantStack(MutantStack const& src) {
 			this->src = src.src;
 		}

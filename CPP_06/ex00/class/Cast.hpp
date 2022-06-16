@@ -34,7 +34,7 @@ class Cast
 	public:
 		//Constructors
 		Cast(char *av);
-		~Cast();
+		virtual ~Cast();
 		Cast(Cast const& src);
 		Cast & operator=(Cast const& src);
 		

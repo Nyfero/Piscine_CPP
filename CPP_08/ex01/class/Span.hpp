@@ -21,7 +21,7 @@ class Span
 	public:
 		//Constructors
 		Span(unsigned int a_size);
-		~Span();
+		virtual ~Span();
 		Span(Span const& src);
 		Span & operator=(Span const& src);
 		
