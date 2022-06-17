@@ -12,8 +12,8 @@ class A_Form
 	private:
 		const std::string	m_name;
 		bool				m_isSigned;
-		const int			m_sign;
-		const int			m_exec;
+		int					m_sign;
+		int					m_exec;
 
 	public:
 		//Constructors
@@ -54,6 +54,7 @@ class A_Form
 		int			GetExec() const;
 		void			beSigned(Bureaucrat & src);
 		virtual void	execute(Bureaucrat const& executor) const = 0;
+		void		beExecuted(Bureaucrat const &executor) const;
 };
 
 //Display

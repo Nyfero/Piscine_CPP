@@ -30,38 +30,29 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 //				//
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
-	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
-	{	
-		std::string outFileName;
-		outFileName = this->m_target + "_shruberry";
-		std::ofstream	outfile(outFileName.c_str());
-
-		if (outfile.fail())
-		{
-			std::cout << "Error" << std::endl;
-			return ;
-		}
-		outfile << "         &&& &&  & &&" << std::endl;
-		outfile << "      && &\\/&\\|& ()|/ @, &&" << std::endl;
-		outfile << "      &\\/(/&/&||/& /_/)_&/_&" << std::endl;
-		outfile << "   &() &\\/&|()|/&\\/ '%\" & ()" << std::endl;
-		outfile << "  &_\\_&&_\\ |& |&&/&__%_/_& &&" << std::endl;
-		outfile << "&&   && & &| &| /& & % ()& /&&" << std::endl;
-		outfile << " ()&_---()&\\&\\|&&-&&--%---()~" << std::endl;
-		outfile << "     &&     \\|||" << std::endl;
-		outfile << "             |||" << std::endl;
-		outfile << "             |||" << std::endl;
-		outfile << "             |||" << std::endl;
-		outfile << "       , -=-~  .-^- _" << std::endl;
-		outfile.close();
-	}
-	else
+	(void)executor;
+	std::string outFileName;
+	outFileName = this->m_target + "_shruberry";
+	std::ofstream	outfile(outFileName.c_str());
+	
+	if (outfile.fail())
 	{
-		if (this->IsSigned())
-			throw GradeTooLowExecute();
-		else
-			throw FormNotSigned();
+		std::cout << "Error" << std::endl;
+		return ;
 	}
+	outfile << "         &&& &&  & &&" << std::endl;
+	outfile << "      && &\\/&\\|& ()|/ @, &&" << std::endl;
+	outfile << "      &\\/(/&/&||/& /_/)_&/_&" << std::endl;
+	outfile << "   &() &\\/&|()|/&\\/ '%\" & ()" << std::endl;
+	outfile << "  &_\\_&&_\\ |& |&&/&__%_/_& &&" << std::endl;
+	outfile << "&&   && & &| &| /& & % ()& /&&" << std::endl;
+	outfile << " ()&_---()&\\&\\|&&-&&--%---()~" << std::endl;
+	outfile << "     &&     \\|||" << std::endl;
+	outfile << "             |||" << std::endl;
+	outfile << "             |||" << std::endl;
+	outfile << "             |||" << std::endl;
+	outfile << "       , -=-~  .-^- _" << std::endl;
+	outfile.close();
 }
 
 std::string	ShrubberyCreationForm::GetTarget() const {

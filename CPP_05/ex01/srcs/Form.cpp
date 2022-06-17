@@ -4,9 +4,14 @@
 //	Constructors	//
 //					//
 
-Form::Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false),
-	m_sign(a_sign), m_exec(a_exec) {
+Form::Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false) {
+	if (a_sign <= 0 || a_exec <= 0)
+		throw GradeTooHighException();
+	if (a_sign >= 151 || a_exec >= 151)
+		throw GradeTooLowException();
 	std::cout << "Form Constructor surcharged call" << std::endl;
+	this->m_sign = a_sign;
+	this->m_exec = a_exec;
 }
 
 Form::Form(Form const& src): m_name(src.m_name), m_isSigned(src.m_isSigned),

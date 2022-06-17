@@ -30,24 +30,15 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 //				//
 
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+	(void)executor;
 	srand (time(NULL));
 	int	i = rand() % 1;
 
-	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
-	{
-		std::cout << "BBBZZZZzzzzz...." << std::endl;
-		if (i == 0)
-			std::cout << this->m_target << " has been robotomized" << std::endl;
-		else
-			std::cout << "The robotomy failed !" << std::endl;
-	}
+	std::cout << "BBBZZZZzzzzz...." << std::endl;
+	if (i == 0)
+		std::cout << this->m_target << " has been robotomized" << std::endl;
 	else
-	{
-		if (this->IsSigned())
-			throw GradeTooLowExecute();
-		else
-			throw FormNotSigned();
-	}
+		std::cout << "The robotomy failed !" << std::endl;
 }
 
 std::string	RobotomyRequestForm::GetTarget() const {

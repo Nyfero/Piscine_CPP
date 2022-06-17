@@ -13,8 +13,8 @@ class Form
 		Form();
 		const std::string	m_name;
 		bool				m_isSigned;
-		const int			m_sign;
-		const int			m_exec;
+		int					m_sign;
+		int					m_exec;
 
 	public:
 		//Constructors

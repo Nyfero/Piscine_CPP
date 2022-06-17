@@ -30,15 +30,8 @@ PresidentialPardonForm::~PresidentialPardonForm() {
 //				//
 
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
-	if (this->IsSigned() && executor.GetGrade() <= this->GetExec())
-		std::cout << this->m_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-	else
-	{
-		if (this->IsSigned())
-			throw GradeTooLowExecute();
-		else
-			throw FormNotSigned();
-	}
+	(void)executor;
+	std::cout << this->m_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 std::string	PresidentialPardonForm::GetTarget() const {

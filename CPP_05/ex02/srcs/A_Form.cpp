@@ -4,9 +4,14 @@
 //	Constructors	//
 //					//
 
-A_Form::A_Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false),
-	m_sign(a_sign), m_exec(a_exec) {
+A_Form::A_Form(std::string a_name, int a_sign, int a_exec):m_name(a_name), m_isSigned(false) {
+	if (a_sign <= 0 || a_exec <= 0)
+		throw GradeTooHighException();
+	if (a_sign >= 151 || a_exec >= 151)
+		throw GradeTooLowException();
 	std::cout << "A_Form Constructor surcharged call" << std::endl;
+	this->m_sign = a_sign;
+	this->m_exec = a_exec;
 }
 
 A_Form::A_Form(A_Form const& src): m_name(src.m_name), m_isSigned(src.m_isSigned),
@@ -51,6 +56,14 @@ void A_Form::beSigned(Bureaucrat & src) {
 	if (src.GetGrade() <= 0)
 		throw GradeTooHighException();
 	this->m_isSigned = true;
+}
+
+void	A_Form::beExecuted(Bureaucrat const &executor) const {
+	if (this->m_isSigned == false)
+		throw A_Form::FormNotSigned();
+	if (executor.GetGrade() > this->m_exec)
+		throw A_Form::GradeTooLowException();
+	this->execute(executor);
 }
 
 //			//
