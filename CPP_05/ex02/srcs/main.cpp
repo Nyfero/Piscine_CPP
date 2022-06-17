@@ -9,8 +9,9 @@ int main()
 	std::cout << std::endl;
 	std::cout << "\t\t\e[92m---MAIN---\e[39m" << std::endl << std::endl;
 	{
-		std::cout << "\t\e[93mShrubbery\e[39m" << std::endl;
-		std::cout << std::endl;
+		//----------------------------------------------------//
+		std::cout << "\t\e[93mShrubbery\e[39m" << std::endl << std::endl;
+		//----------------------------------------------------//
 		
 		std::cout << "\e[96mBoss; grade: 1\e[39m" << std::endl;
 		try
@@ -74,9 +75,7 @@ int main()
 		{ std::cerr << e.what() << std::endl; }
 		
 		//----------------------------------------------------//
-		std::cout << std::endl;
-		std::cout << "\t\e[93mRobotomy\e[39m" << std::endl;
-		std::cout << std::endl;
+		std::cout << std::endl << "\t\e[93mRobotomy\e[39m" << std::endl << std::endl;
 		//----------------------------------------------------//
 		
 		std::cout << "\e[96mBoss; grade: 1\e[39m" << std::endl;
@@ -141,9 +140,7 @@ int main()
 		{ std::cerr << e.what() << std::endl; }
 		
 		//----------------------------------------------------//
-		std::cout << std::endl;
-		std::cout << "\t\e[93mPresidential\e[39m" << std::endl;
-		std::cout << std::endl;
+		std::cout << std::endl << "\t\e[93mPresidential\e[39m" << std::endl << std::endl;
 		//----------------------------------------------------//
 		
 		std::cout << "\e[96mBoss; grade: 1\e[39m" << std::endl;

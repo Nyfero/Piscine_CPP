@@ -16,9 +16,7 @@ int main()
 				std::cout << "\e[93m" << boss << "\e[39m" << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 			
 			std::cout << std::endl << "\e[96mmafieux rank 150\e[39m" << std::endl;
 			try
@@ -28,9 +26,7 @@ int main()
 				std::cout << "\e[93m" << mafieux << "\e[39m" << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 			
 			std::cout << std::endl << "\e[96mGradeToLowException (rank 151)\e[39m" << std::endl;
 			try
@@ -40,9 +36,7 @@ int main()
 				std::cout << "\e[93m" << erreurlow << "\e[39m" << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 			
 			std::cout << std::endl << "\e[96mGradeToHighException (rank 0)\e[39m" << std::endl;
 			try
@@ -52,9 +46,7 @@ int main()
 				std::cout << "\e[93m" << erreurtop << "\e[39m" << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 		}
 		std::cout << std::endl;
 		std::cout << "\t\e[91m---INIT---\e[39m" << std::endl << std::endl;
@@ -76,9 +68,7 @@ int main()
 				std::cout << boss.GetName() << ": " << boss.GetGrade() << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 			
 			std::cout << std::endl << "\e[96mmafieux rank 150\e[39m" << std::endl;
 			try
@@ -94,9 +84,7 @@ int main()
 				std::cout << mafieux.GetName() << ": " << mafieux.GetGrade() << std::endl;
 			}
 			catch (const std::exception& e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
+			{ std::cerr << e.what() << std::endl; }
 		}
 		std::cout << std::endl;
 		std::cout << "\t\e[91m---Promote/Demote---\e[39m" << std::endl << std::endl;

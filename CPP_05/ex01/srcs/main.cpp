@@ -19,9 +19,7 @@ int main()
 			declaration.beSigned(boss);
 		}
 		catch (const std::exception& e)
-		{
-			std::cerr << "To low level: " << e.what() << std::endl;
-		}
+		{ std::cerr << e.what() << std::endl; }
 		std::cout << "\e[93m" << declaration << "\e[39m" << std::endl << std::endl;
 		
 		try
@@ -30,9 +28,7 @@ int main()
 			nuclear.beSigned(stagiaire);
 		}
 		catch (const std::exception& e)
-		{
-			std::cerr << "To low level: " << e.what() << std::endl;
-		}
+		{ std::cerr << e.what() << std::endl; }
 		std::cout << "\e[93m" << nuclear << "\e[39m" << std::endl << std::endl;
 		
 		try
