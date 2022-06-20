@@ -1,11 +1,12 @@
 # include "../class/easyfind.hpp"
+# define TYPE int
 
 int main( void )
 {
 	std::cout << std::endl;
 	std::cout << "\t\t\e[92m---MAIN---\e[39m" << std::endl << std::endl;
 	{
-		std::vector<int>	tab(7);
+		std::vector<TYPE>	tab(7);
 		tab[0] = 42;
 		tab[1] = 6;
 		tab[2] = 32;

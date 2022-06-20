@@ -29,17 +29,13 @@ class Span
 		class ToManyElement : public std::exception
 		{
 			public:
-				virtual const char* what() const throw() {
-						return ("\e[91mThe array is full !\e[39m");
-				}
+				virtual const char* what() const throw();
 		};
 		
 		class NotEnoughNumber : public std::exception
 		{
 			public:
-				virtual const char* what() const throw() {
-						return ("\e[91mThere is not enough number in the array to find a span !\e[39m");
-				}
+				virtual const char* what() const throw();
 		};
 		
 		//Functions

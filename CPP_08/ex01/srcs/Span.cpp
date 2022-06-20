@@ -37,6 +37,18 @@ Span & Span::operator=(Span const& src) {
 	return (*this);
 }
 
+//			//
+//	Throw	//
+//			//
+
+const char* Span::ToManyElement::what() const throw() {
+	return ("\e[91mThe array is full !\e[39m");
+}
+
+const char* Span::NotEnoughNumber::what() const throw() {
+	return ("\e[91mThere is not enough number in the array to find a span !\e[39m");
+}
+
 //				//
 //	Functions	//
 //				//
